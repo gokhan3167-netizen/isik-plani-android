@@ -1,0 +1,7 @@
+{
+  "appId": "com.isikplani.app",
+  "appName": "Işık Planı",
+  "webDir": "www",
+  "ios": { "contentInset": "never" },
+  "android": { "allowMixedContent": false }
+}

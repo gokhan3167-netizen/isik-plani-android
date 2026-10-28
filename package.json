@@ -1,0 +1,28 @@
+{
+  "name": "isik-plani",
+  "version": "2.8.0",
+  "private": true,
+  "description": "Işık Planı – sahne ışık planı ve rider çizimi (iOS / Android)",
+  "scripts": {
+    "vendor": "node scripts/vendor.mjs",
+    "assets": "npx capacitor-assets generate --iconBackgroundColor #16191D --iconBackgroundColorDark #16191D --splashBackgroundColor #16191D --splashBackgroundColorDark #16191D",
+    "fixtures": "node scripts/fixtures.mjs",
+    "sync": "npm run vendor && npm run fixtures && npx cap sync"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/app": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/filesystem": "^7.0.0",
+    "@capacitor/ios": "^7.0.0",
+    "@capacitor/share": "^7.0.0",
+    "@fontsource/barlow": "^5.0.0",
+    "@fontsource/barlow-condensed": "^5.0.0",
+    "jspdf": "2.5.1",
+    "jszip": "3.10.1"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.0",
+    "@capacitor/cli": "^7.0.0"
+  }
+}
