@@ -16,6 +16,15 @@ jobs:
       - run: npm install
       - run: npm run vendor
       - run: node scripts/fixtures.mjs
+      - uses: actions/cache@v4
+        with:
+          path: gdtf-cache
+          key: gdtf-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: gdtf-${{ runner.os }}-
+      - run: node scripts/gdtf.mjs
+        env:
+          GDTF_USER: ${{ secrets.GDTF_USER }}
+          GDTF_PASS: ${{ secrets.GDTF_PASS }}
       - run: npx cap add android
       - run: npx capacitor-assets generate --android --iconBackgroundColor '#16191D' --iconBackgroundColorDark '#16191D' --splashBackgroundColor '#16191D' --splashBackgroundColorDark '#16191D'
       - run: npx cap sync android
@@ -24,4 +33,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: isik-plani-android
-          path: isik-plani.apk
+          path: |
+            isik-plani.apk
+            ofl-kutuphane.json
+            gdtf-kutuphane.json
