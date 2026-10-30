@@ -1,5 +1,7 @@
 name: Android APK derle
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   apk:
     runs-on: ubuntu-24.04
@@ -13,6 +15,11 @@ jobs:
           distribution: temurin
           java-version: 21
       - run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+      - name: Imza anahtari (her derlemede ayni imza; guncelleme ustune kurulabilsin)
+        env:
+          KS: ${{ secrets.ANDROID_DEBUG_KEYSTORE }}
+        run: |
+          if [ -n "$KS" ]; then mkdir -p ~/.android && echo "$KS" | base64 -d > ~/.android/debug.keystore && echo "Sabit imza kullaniliyor"; else echo "UYARI: ANDROID_DEBUG_KEYSTORE tanimli degil; APK her derlemede farkli imzalanir"; fi
       - run: npm install
       - run: npm run vendor
       - run: node scripts/fixtures.mjs
@@ -25,11 +32,23 @@ jobs:
         env:
           GDTF_USER: ${{ secrets.GDTF_USER }}
           GDTF_PASS: ${{ secrets.GDTF_PASS }}
+      - name: Surum numarasi
+        id: v
+        run: node -e "const p=require('./package.json'),[a,b]=p.version.split('.'),v=a+'.'+b+'.'+process.env.GITHUB_RUN_NUMBER,fs=require('fs');fs.writeFileSync('www/build-info.js','window.BUILD_INFO='+JSON.stringify({v,platform:'android',repo:process.env.GITHUB_REPOSITORY})+';');fs.appendFileSync(process.env.GITHUB_OUTPUT,'v='+v+'\n');console.log('Surum',v)"
       - run: npx cap add android
+      - run: sed -i "s/versionCode [0-9]*/versionCode ${{ github.run_number }}/; s/versionName \"[^\"]*\"/versionName \"${{ steps.v.outputs.v }}\"/" android/app/build.gradle
       - run: npx capacitor-assets generate --android --iconBackgroundColor '#16191D' --iconBackgroundColorDark '#16191D' --splashBackgroundColor '#16191D' --splashBackgroundColorDark '#16191D'
       - run: npx cap sync android
       - run: cd android && chmod +x gradlew && ./gradlew assembleDebug
       - run: cp android/app/build/outputs/apk/debug/app-debug.apk isik-plani.apk
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.v.outputs.v }}
+          name: Işık Planı ${{ steps.v.outputs.v }} (Android)
+          files: |
+            isik-plani.apk
+            ofl-kutuphane.json
+            gdtf-kutuphane.json
       - uses: actions/upload-artifact@v4
         with:
           name: isik-plani-android
