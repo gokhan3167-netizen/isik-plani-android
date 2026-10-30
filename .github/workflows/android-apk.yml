@@ -38,11 +38,15 @@ jobs:
           path: gdtf-cache
           key: gdtf-${{ runner.os }}-${{ github.run_id }}
           restore-keys: gdtf-${{ runner.os }}-
-      - run: node scripts/gdtf.mjs
+      - name: GDTF kutuphanesi (en fazla 20 dk; bitmeyenler sonraki derlemede)
+        run: node scripts/gdtf.mjs
+        timeout-minutes: 30
+        continue-on-error: true
         env:
           GDTF_USER: ${{ secrets.GDTF_USER }}
           GDTF_PASS: ${{ secrets.GDTF_PASS }}
           FX_DETAIL: '0'
+          GDTF_BUDGET_MIN: '20'
       - name: Surum numarasi
         id: v
         run: node -e "const p=require('./package.json'),[a,b]=p.version.split('.'),v=a+'.'+b+'.'+process.env.GITHUB_RUN_NUMBER,fs=require('fs');fs.writeFileSync('www/build-info.js','window.BUILD_INFO='+JSON.stringify({v,platform:'android',repo:process.env.GITHUB_REPOSITORY})+';');fs.appendFileSync(process.env.GITHUB_OUTPUT,'v='+v+'\n');console.log('Surum',v)"
