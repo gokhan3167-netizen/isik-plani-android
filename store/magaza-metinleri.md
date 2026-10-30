@@ -55,25 +55,46 @@ GÖRÜNÜMLER
 • PDF ve PNG plan: semboller, malzeme listesi, köprü ölçüleri, filtre listesi ve antetle.
 • Patch listesi (CSV), USITT ASCII, MVR (grandMA3, ETC Eos, Vectorworks, Capture) ve grandMA2 patch (XML); WhatsApp ya da e-postayla paylaş.
 
-Hesap gerektirmez, internetsiz çalışır, hiçbir veri toplamaz.
+Türkçe ve İngilizce kullanılabilir. Hesap gerektirmez, internetsiz çalışır, hiçbir veri toplamaz.
 
-## Long description (English)
-Işık Planı lets lighting designers draw stage lighting plots and technical riders on phone or tablet.
+## English listing (Play Console › Store listing › Add translation › English (United States))
+- **App name (30):** Işık Planı – Lighting Plot
+- **Short description (80):** Stage lighting plots, patch and riders: pipes, fixtures, DMX, gels, 3D, PDF.
 
-• Stage, pipes and towers; equal-spaced multi-pipe setup in one step
-• Tap to place fixtures; they snap to pipes and never overlap
-• Copy / paste / duplicate, multi-select, pinch zoom
-• 650+ Open Fixture Library fixtures and 290+ built-in fixtures, offline; import GDTF, Open Fixture Library and QLC+ files
-• Top plan, front/side sections, perspective and 3D views; layers
-• Per-group numbering, DMX universe/address/footprint, dimmer numbers, batch addressing
-• Lee and Rosco gels with colored symbols, gobo notes, gel cut list
-• Distance and cable-run measurement, automatic pipe spacing dimensions
-• Export rider PDF, PDF/PNG plot with legend and title block, CSV patch list, USITT ASCII, MVR and project file
+### Full description
+Işık Planı is a lighting plot and rider tool built by a working theatre lighting designer, for touring shows, rehearsals and production meetings. Draw the plot on your phone or tablet, patch it, and send a professional rider in minutes.
 
-No account, works offline, collects no data.
+PLOT
+• Set the stage size or start from a template: proscenium, black box, thrust, arena, traverse or concert stage, all scalable.
+• Hang pipes and booms, or a whole set of evenly spaced pipes in one step.
+• Tap to place fixtures; they snap to the pipe and never overlap.
+• Scenery, legs and borders, performers and an object library for set dressing.
+• Lock any item: locked fixtures keep their position but can still be focused and controlled.
+
+FIXTURE LIBRARY
+• Thousands of real fixtures from Open Fixture Library and GDTF, available offline, with modes, DMX footprints and channel maps.
+• Original profiles: real gobos, color wheels, zoom ranges and every channel function.
+• Import GDTF, Open Fixture Library (.json) and QLC+ (.qxf) files, or build your own symbols.
+
+PATCH & NUMBERING
+• Unit numbers per fixture type (W1, S3, ER5), console channels and purpose/focus notes.
+• Universe, DMX address and footprint; batch addressing remembers the next free address.
+• Editable patch list with instant conflict detection.
+
+COLOR, FOCUS & BEAMS
+• Lee and Rosco gels; symbols take the gel color. Gobo notes and an automatic gel cut list.
+• Drag the focus point to aim a fixture; aim a whole selection together.
+• Front and side sections, perspective and 3D views with beams, color, gobos and haze.
+
+RIDER & EXCHANGE
+• One-file rider PDF: scaled plot, equipment list, total power and amps per phase, pipe dimensions, channel/patch list, gel cut list and notes.
+• PDF/PNG plot, CSV patch list, USITT ASCII, MVR (grandMA3, ETC Eos, Vectorworks, Capture) and grandMA2 patch.
+• Import PDF plots from WYSIWYG and similar programs: the legend is read and fixtures are placed by type.
+
+Available in English and Turkish. No account, works offline, collects no data.
 
 ## App Store inceleme notu (App Review Information > Notes)
-This is a standalone offline drawing tool for stage lighting designers. No login is required. To test: tap a fixture type in the top strip, tap on a pipe to place it, tap a fixture to edit DMX/gel settings, then use "Aktar > PDF plan" to export via the share sheet. All data stays on the device.
+This is a standalone offline drawing tool for stage lighting designers. No login is required. To test: tap a fixture type in the top strip, tap on a pipe to place it, tap a fixture to edit DMX/gel settings, then use "File > PDF plot" to export via the share sheet. The interface is available in English and Turkish (Settings > Language). All data stays on the device.
 
 ## Google Play – Veri güvenliği formu
 - Uygulama kullanıcı verisi topluyor mu? **Hayır**
@@ -84,6 +105,17 @@ This is a standalone offline drawing tool for stage lighting designers. No login
 ## App Store – App Privacy
 - “Data Not Collected” (Veri toplanmıyor)
 
-## Ekran görüntüleri
-Hazır: `play-ekran-1.png` … `play-ekran-6.png` (1080×1920, Play telefon ekran görüntüsü) ve `play-feature-graphic-1024x500.png` (tanıtım görseli). Play Console › Mağaza girişi › Grafikler bölümüne yükle.
-1. Işık planını telefonda çiz · 2. Sahneyi 3D gör · 3. Patch tek ekranda · 4. 650+ cihaz, internetsiz · 5. Her ışığın tüm bilgisi · 6. Rider'a hazır çıktı
+## Ekran görüntüleri ve tanıtım görseli
+Türkçe (varsayılan mağaza girişi): `play-ekran-1.png` … `play-ekran-6.png` (1080×1920) ve `play-feature-graphic-1024x500.png`.
+İngilizce çeviri: `en/play-en-ekran-1.png` … `en/play-en-ekran-6.png` ve `en/play-en-feature-1024x500.png`.
+Play Console › Mağaza girişi › Grafikler (İngilizce için önce “Çeviri ekle” › English).
+
+| # | Türkçe | English |
+|---|---|---|
+| 1 | Işık planın cebinde | Your lighting plot, in your pocket |
+| 2 | Patch’i hatasız kur | Patch it right |
+| 3 | Her ışık, her detay | Every unit, every detail |
+| 4 | Sahneyi ışığıyla gör | See the stage in light |
+| 5 | Gerçek cihazlar, gerçek veriler | Real fixtures, real data |
+| 6 | Ridere hazır | Rider-ready |
+| Tanıtım | Işık planı · Patch · Rider — Sahne ışığı için profesyonel çizim aracı | Lighting plot · Patch · Rider — The professional plotting tool for stage lighting |
