@@ -1,0 +1,7 @@
+node_modules/
+android/
+ios/
+www/vendor/
+*.jks
+*.keystore
+*.aab

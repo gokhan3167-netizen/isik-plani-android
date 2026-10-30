@@ -1,5 +1,12 @@
 name: Android APK derle
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      track:
+        description: 'Google Play kanalı (internal = dahili test, alpha = kapalı test, production = herkese açık)'
+        type: choice
+        options: [alpha, internal, production]
+        default: alpha
 permissions:
   contents: write
 jobs:
@@ -40,6 +47,11 @@ jobs:
         id: v
         run: node -e "const p=require('./package.json'),[a,b]=p.version.split('.'),v=a+'.'+b+'.'+process.env.GITHUB_RUN_NUMBER,fs=require('fs');fs.writeFileSync('www/build-info.js','window.BUILD_INFO='+JSON.stringify({v,platform:'android',repo:process.env.GITHUB_REPOSITORY})+';');fs.appendFileSync(process.env.GITHUB_OUTPUT,'v='+v+'\n');console.log('Surum',v)"
       - run: npx cap add android
+      - name: Hedef Android 16 (API 36) - Google Play şartı
+        run: |
+          sed -i 's/compileSdkVersion = [0-9]*/compileSdkVersion = 36/; s/targetSdkVersion = [0-9]*/targetSdkVersion = 36/' android/variables.gradle
+          echo "android.suppressUnsupportedCompileSdk=36" >> android/gradle.properties
+          grep -E "compileSdk|targetSdk|minSdk" android/variables.gradle
       - run: sed -i "s/versionCode [0-9]*/versionCode ${{ github.run_number }}/; s/versionName \"[^\"]*\"/versionName \"${{ steps.v.outputs.v }}\"/" android/app/build.gradle
       - run: npx capacitor-assets generate --android --iconBackgroundColor '#16191D' --iconBackgroundColorDark '#16191D' --splashBackgroundColor '#16191D' --splashBackgroundColorDark '#16191D'
       - run: npx cap sync android
@@ -68,7 +80,7 @@ jobs:
           jarsigner -sigalg SHA256withRSA -digestalg SHA-256 -keystore upload.jks -storepass "$PW" -keypass "$PW" isik-plani-play.aab upload
           jarsigner -verify isik-plani-play.aab
           rm -f upload.jks
-      - name: Google Play'e yukle (dahili test)
+      - name: Google Play'e yukle
         if: env.HAS_PLAY_KEY == 'true' && env.HAS_PLAY_API == 'true'
         uses: r0adkll/upload-google-play@v1
         with:
@@ -76,7 +88,7 @@ jobs:
           packageName: com.isikplani.app
           releaseFiles: isik-plani-play.aab
           releaseName: ${{ steps.v.outputs.v }}
-          track: internal
+          track: ${{ inputs.track || 'alpha' }}
           status: completed
       - uses: actions/upload-artifact@v4
         if: env.HAS_PLAY_KEY == 'true'

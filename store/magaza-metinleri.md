@@ -5,7 +5,8 @@
 - **Kategori:** Verimlilik (Productivity)
 - **Yaş sınırı:** 4+ / Herkes
 - **Fiyat:** Ücretsiz (istersen ücretli yapabilirsin)
-- **Gizlilik politikası adresi:** `gizlilik-politikasi.html` dosyasını Netlify'a yükleyip çıkan adresi yaz.
+- **Gizlilik politikası adresi:** https://SITE-ADIN.netlify.app/gizlilik.html (Netlify paketinde hazır)
+- **Destek e-postası:** isikplani.destek@gmail.com
 
 ## Kısa açıklama (Google Play, en fazla 80 karakter)
 Sahne ışık planı ve rider: köprü, projektör, DMX patch, filtre, 3D ve PDF.
@@ -24,6 +25,8 @@ Işık Planı, tiyatro, konser ve turne prodüksiyonları için ışık planın�
 • Projektörleri dokunarak yerleştir; köprüye otomatik oturur, üst üste binmez.
 • Sağ tık / basılı tut menüsüyle kopyala, yapıştır, çoğalt.
 • Parmakla yakınlaştır, kaydır; çoklu seçimle grupları birlikte taşı.
+• Hazır sahneler: İtalyan, black box, thrust, arena, traverse, konser; ölçüyü gir, köprüler orantılı kurulur.
+• WYSIWYG ve benzeri programlardan PDF plan içe aktar: lejant okunur, projektörler tipleriyle yerleşir.
 
 PROJEKTÖR KÜTÜPHANESİ
 • Open Fixture Library’nin 650’den fazla cihazı ve 290’dan fazla yerleşik cihaz uygulamanın içinde; internet gerekmez.
@@ -50,7 +53,7 @@ GÖRÜNÜMLER
 ÇIKTI
 • Tek dosyada rider PDF: ölçekli plan, malzeme ve güç listesi, kanal ve filtre listesi.
 • PDF ve PNG plan: semboller, malzeme listesi, köprü ölçüleri, filtre listesi ve antetle.
-• Patch listesi (CSV), USITT ASCII ve MVR (grandMA3, Vectorworks, Capture); WhatsApp ya da e-postayla paylaş.
+• Patch listesi (CSV), USITT ASCII, MVR (grandMA3, ETC Eos, Vectorworks, Capture) ve grandMA2 patch (XML); WhatsApp ya da e-postayla paylaş.
 
 Hesap gerektirmez, internetsiz çalışır, hiçbir veri toplamaz.
 

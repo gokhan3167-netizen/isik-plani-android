@@ -1,6 +1,6 @@
 {
   "name": "isik-plani",
-  "version": "4.8.2",
+  "version": "5.7.5",
   "private": true,
   "description": "Işık Planı – sahne ışık planı ve rider çizimi (iOS / Android)",
   "scripts": {
@@ -20,10 +20,16 @@
     "@fontsource/barlow-condensed": "^5.0.0",
     "jspdf": "2.5.1",
     "jszip": "3.10.1",
-    "three": "0.128.0"
+    "three": "0.128.0",
+    "pdfjs-dist": "3.11.174"
   },
   "devDependencies": {
     "@capacitor/assets": "^3.0.0",
     "@capacitor/cli": "^7.0.0"
-  }
+  },
+  "author": {
+    "name": "Gökhan Gülçebi",
+    "email": "isikplani.destek@gmail.com"
+  },
+  "license": "UNLICENSED"
 }
