@@ -8,7 +8,7 @@
 - **Gizlilik politikası adresi:** `gizlilik-politikasi.html` dosyasını Netlify'a yükleyip çıkan adresi yaz.
 
 ## Kısa açıklama (Google Play, en fazla 80 karakter)
-Sahne ışık planı ve rider: köprü, projektör, DMX, renk filtresi ve ölçü.
+Sahne ışık planı ve rider: köprü, projektör, DMX patch, filtre, 3D ve PDF.
 
 ## Alt başlık (App Store, en fazla 30 karakter)
 Sahne ışık planı ve rider
@@ -26,7 +26,8 @@ Işık Planı, tiyatro, konser ve turne prodüksiyonları için ışık planın�
 • Parmakla yakınlaştır, kaydır; çoklu seçimle grupları birlikte taşı.
 
 PROJEKTÖR KÜTÜPHANESİ
-• Robe, Martin, Clay Paky, GLP, Ayrton, ETC, ARRI, ADB, Robert Juliat ve daha fazlasından 290’dan fazla cihaz ve projeksiyon.
+• Open Fixture Library’nin 650’den fazla cihazı ve 290’dan fazla yerleşik cihaz uygulamanın içinde; internet gerekmez.
+• Robe, Martin, Clay Paky, GLP, Ayrton, ETC, ARRI, ADB, Robert Juliat ve daha fazlası; modlar ve kanal haritalarıyla.
 • GDTF, Open Fixture Library ve QLC+ dosyalarını içe aktar.
 
 DMX VE DİMMER
@@ -42,9 +43,14 @@ RENK FİLTRESİ VE GOBO
 • Projektörler arası mesafeyi ölç; kablo metrajı için zincir ölçü ve pay ekle.
 • Köprü aralıkları ve sahne önünden uzaklıklar otomatik çizilir.
 
+GÖRÜNÜMLER
+• Üstten plan, önden ve yandan kesit, çizim tarzında perspektif ve 3D sahne görünümü.
+• Katmanlar: dekor, oyuncular, köprüler ve ışıkları ayrı ayrı gizle ya da kilitle.
+
 ÇIKTI
+• Tek dosyada rider PDF: ölçekli plan, malzeme ve güç listesi, kanal ve filtre listesi.
 • PDF ve PNG plan: semboller, malzeme listesi, köprü ölçüleri, filtre listesi ve antetle.
-• Patch listesi (CSV) ve proje dosyası; WhatsApp ya da e-postayla paylaş.
+• Patch listesi (CSV), USITT ASCII ve MVR (grandMA3, Vectorworks, Capture); WhatsApp ya da e-postayla paylaş.
 
 Hesap gerektirmez, internetsiz çalışır, hiçbir veri toplamaz.
 
@@ -54,11 +60,12 @@ Işık Planı lets lighting designers draw stage lighting plots and technical ri
 • Stage, pipes and towers; equal-spaced multi-pipe setup in one step
 • Tap to place fixtures; they snap to pipes and never overlap
 • Copy / paste / duplicate, multi-select, pinch zoom
-• 290+ fixtures and projectors; import GDTF, Open Fixture Library and QLC+ files
+• 650+ Open Fixture Library fixtures and 290+ built-in fixtures, offline; import GDTF, Open Fixture Library and QLC+ files
+• Top plan, front/side sections, perspective and 3D views; layers
 • Per-group numbering, DMX universe/address/footprint, dimmer numbers, batch addressing
 • Lee and Rosco gels with colored symbols, gobo notes, gel cut list
 • Distance and cable-run measurement, automatic pipe spacing dimensions
-• Export PDF/PNG plot with legend and title block, CSV patch list, project file
+• Export rider PDF, PDF/PNG plot with legend and title block, CSV patch list, USITT ASCII, MVR and project file
 
 No account, works offline, collects no data.
 
@@ -75,11 +82,5 @@ This is a standalone offline drawing tool for stage lighting designers. No login
 - “Data Not Collected” (Veri toplanmıyor)
 
 ## Ekran görüntüleri
-Telefonunda örnek bir plan açıp şu ekranların görüntüsünü al:
-1. Dolu bir ışık planı (köprüler, renkli sıcak ışıklar, ölçüler)
-2. Projektör kütüphanesi
-3. Bir projektörün özellik paneli (DMX, gel, gobo)
-4. Çoklu seçim ve sırayla adresleme
-5. PDF çıktısı
-- App Store: 6.7" / 6.9" iPhone boyutu zorunlu (ör. iPhone 15/16 Pro Max ekran görüntüsü). iPad’i destekleyeceksen iPad 13" görüntüleri de gerekir.
-- Google Play: en az 2 telefon ekran görüntüsü.
+Hazır: `play-ekran-1.png` … `play-ekran-6.png` (1080×1920, Play telefon ekran görüntüsü) ve `play-feature-graphic-1024x500.png` (tanıtım görseli). Play Console › Mağaza girişi › Grafikler bölümüne yükle.
+1. Işık planını telefonda çiz · 2. Sahneyi 3D gör · 3. Patch tek ekranda · 4. 650+ cihaz, internetsiz · 5. Her ışığın tüm bilgisi · 6. Rider'a hazır çıktı
