@@ -1,6 +1,6 @@
 {
   "name": "isik-plani",
-  "version": "4.5.0",
+  "version": "4.8.2",
   "private": true,
   "description": "Işık Planı – sahne ışık planı ve rider çizimi (iOS / Android)",
   "scripts": {
