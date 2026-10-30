@@ -434,6 +434,25 @@ body.quiet .toast{padding:7px 12px;font-size:13px}
   body .toast{bottom:calc(66px + env(safe-area-inset-bottom,0px));font-size:13px;padding:8px 12px}
   body .zoomtag{display:none}
 }
+/* Telefon: canlı panel ve kontroller ekranı kapatmasın */
+#area.lpmini{--lph:44px}
+#area.lpmini .lp-b{display:none}
+@media (max-width:899px){
+  :root{--lph:min(40vh,330px)}
+  #area.lpmini{--lph:44px}
+  body .lp-h{padding:5px 6px;gap:5px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  body .lp-h .seg button{padding:6px 8px;font-size:12.5px;white-space:nowrap}
+  body .lp-h .btn.sm{padding:6px 8px}
+  body .lp-b{padding:6px 10px}
+  body .lp-b .lrow{grid-template-columns:62px 1fr 44px;margin:3px 0}
+  body .lp-b .cols{gap:0 14px}
+  body .lp-b .acts{margin:4px 0;gap:5px}
+  body .ptabs{margin:4px 0}
+  body .ptabs button{padding:6px 8px;font-size:12.5px}
+  body.lpo #area .vbar,body.lpo #area .handbtn,body.lpo #area .v3ctl,body.lpo #area .sbar.h{display:none!important}
+  body.lpo #area .v3tb{top:8px}
+  body.lpo #area .livebadge{display:none!important}
+}
 </style>
 <script defer src="vendor/ofl-library.js"></script><script defer src="vendor/gdtf-library.js"></script>
 </head>
@@ -491,7 +510,7 @@ window.addEventListener('error',function(e){
       <div class="updbar" id="updBar" hidden></div>
       <button class="livebadge" id="liveBadge">● CANLI</button>
       <div class="livep" id="liveP" role="region" aria-label="Canlı">
-        <div class="lp-h"><div class="seg" id="lpTabs"><button data-lpt="prog" class="on">Test konsolu</button><button data-lpt="cues">Cue listesi</button><button data-lpt="net">Konsol bağlantısı</button></div><label class="check" style="margin:0 0 0 auto"><input type="checkbox" id="liveOn"> Canlı görüntü</label><button class="btn sm" id="lpClose">Kapat</button></div>
+        <div class="lp-h"><div class="seg" id="lpTabs"><button data-lpt="prog" class="on">Test konsolu</button><button data-lpt="cues">Cue listesi</button><button data-lpt="net">Konsol bağlantısı</button></div><label class="check lpon" style="margin:0 0 0 auto"><input type="checkbox" id="liveOn"> <span class="lt">Canlı görüntü</span><span class="st">Canlı</span></label><button class="btn sm lpmin" id="lpMin" title="Paneli küçült / büyüt" aria-label="Paneli küçült">▾</button><button class="btn sm" id="lpClose">Kapat</button></div>
         <div class="lp-b" id="lpBody"></div>
       </div>
       <div class="vbar" id="vbar" role="tablist" aria-label="Görünüm"><button data-view="split" title="Ekranı ikiye böl: solda plan, sağda canlı görünüm"><span class="lt">◫ Böl</span><span class="st">◫</span></button><button data-view="plan" class="on">Üstten</button><button data-view="front">Önden</button><button data-view="side">Yandan</button><button data-view="persp"><span class="lt">Perspektif</span><span class="st">Persp.</span></button><button data-view="3d">3D</button></div>
@@ -855,7 +874,7 @@ function fxDir(f){ const r=(f.rot||0)*Math.PI/180; return {x:-Math.sin(r),y:Math
 function fxFocus0(f){ if(f.focus&&isFinite(f.focus.x)) return f.focus; const d=fxDir(f); return {x:f.x+d.x*3,y:f.y+d.y*3}; }
 function fxFocus(f){ const L=LIVE.on?fxLive(f):null; if(L&&L.tilt!=null){ const z=fxZ(f), t=Math.max(-80,Math.min(80,L.tilt))*Math.PI/180, a=((f.rot||0)+(L.pan||0))*Math.PI/180, d=z*Math.tan(t); return {x:f.x-Math.sin(a)*d,y:f.y+Math.cos(a)*d}; } return fxFocus0(f); }
 let mdrag=null, rdrag=null, suppressCtxUntil=0, tp=null;
-const APP_VER='4.8.2'; const COARSE=matchMedia('(pointer:coarse)').matches;
+const APP_VER='4.8.3'; const COARSE=matchMedia('(pointer:coarse)').matches;
 let clip=null, lastWorld={x:0,y:4}, multiMode=false, marquee=null, lp=null, rcT=null, lastPtr='mouse';
 let cam={x:0,y:5,s:40}, curVB={x:0,y:0,w:10,h:10};
 const hist=[], ptrs=new Map();
@@ -2486,7 +2505,7 @@ function act(a){
   save(); renderAll();
 }
 const mq=matchMedia('(max-width:899px)');
-function openSheet(){ if(mq.matches) insp.classList.add('open'); else if(st.view.inspOff){ st.view.inspOff=false; save(); applyPanels(); } }
+function openSheet(){ if(mq.matches&&LIVE.panel) return; if(mq.matches) insp.classList.add('open'); else if(st.view.inspOff){ st.view.inspOff=false; save(); applyPanels(); } }
 function closeSheet(){ insp.classList.remove('open'); }
 function applyPanels(){
   const m=document.querySelector('main'), v=st.view;
@@ -3468,6 +3487,7 @@ function setView(v){
   $('vwrap').classList.toggle('on',!!kind); const planVis=splitOn||view==='plan'; svg.style.display=planVis?'':'none'; $('zoomTag').style.display=planVis?'':'none'; $('handBtn').style.display=planVis?'':'none';
   if(kind!=='3d') close3D();
   const reflow=()=>{ if(wasSplit!==splitOn) fit(); else applyView(); };
+  if(kind&&mq.matches&&!st.view.palOff){ st.view.palOff=true; applyPanels(); }
   if(!kind){ $('vwrap').innerHTML=''; requestAnimationFrame(reflow); return; }
   if(!splitOn){ placing=null; shapeTool=null; if(measMode) setMeas(false); if(numMode) endNum(); renderPalette(); closeSheet(); }
   else toast('Bölünmüş ekran: soldaki planda yaptığın her değişiklik sağda canlı görünür.');
@@ -3839,7 +3859,9 @@ function goCue(i){
   step();
 }
 function setLive(on){ LIVE.on=!!on; LIVE.cache.clear(); LIVE.tick++; $('liveBadge').classList.toggle('on',LIVE.on); const c=$('liveOn'); if(c) c.checked=LIVE.on; if(LIVE.on&&LIVE.src==='test') writeProg(); renderAll(); }
-function toggleLive(open){ LIVE.panel=open==null?!LIVE.panel:open; $('liveP').classList.toggle('open',LIVE.panel); area.classList.toggle('lpo',LIVE.panel); requestAnimationFrame(()=>{ applyView(); paneSoon(); }); if(LIVE.panel){ if(!LIVE.on) setLive(true); renderLive(); } renderPalette(); }
+function toggleLive(open){ LIVE.panel=open==null?!LIVE.panel:open; $('liveP').classList.toggle('open',LIVE.panel); area.classList.toggle('lpo',LIVE.panel); document.body.classList.toggle('lpo',LIVE.panel);
+  if(LIVE.panel&&mq.matches){ closeSheet(); if(!st.view.palOff){ st.view.palOff=true; LIVE.palAuto=true; applyPanels(); } } else if(!LIVE.panel&&LIVE.palAuto){ LIVE.palAuto=false; }
+  if(!LIVE.panel){ LIVE.mini=false; area.classList.remove('lpmini'); } requestAnimationFrame(()=>{ if(mq.matches&&svg.style.display!=='none') fit(); else applyView(); paneSoon(); }); if(LIVE.panel){ if(!LIVE.on) setLive(true); renderLive(); } renderPalette(); }
 function renderLive(){
   if(!LIVE.panel) return;
   if(!window.isikNet){ const nb=document.querySelector('#lpTabs [data-lpt=net]'); if(nb) nb.remove(); if(LIVE.tab==='net') LIVE.tab='prog'; } const B=$('lpBody'); document.querySelectorAll('#lpTabs [data-lpt]').forEach(b=>b.classList.toggle('on',b.dataset.lpt===LIVE.tab)); $('liveOn').checked=LIVE.on;
@@ -3916,6 +3938,7 @@ function renderLive(){
 }
 $('liveBadge').addEventListener('click',()=>toggleLive(true));
 $('lpClose').addEventListener('click',()=>toggleLive(false));
+$('lpMin').addEventListener('click',()=>{ LIVE.mini=!LIVE.mini; area.classList.toggle('lpmini',LIVE.mini); $('lpMin').textContent=LIVE.mini?'▴':'▾'; requestAnimationFrame(()=>{ applyView(); paneSoon(); }); });
 $('liveOn').addEventListener('change',e=>setLive(e.target.checked));
 $('lpTabs').addEventListener('click',e=>{ const b=e.target.closest('[data-lpt]'); if(!b) return; LIVE.tab=b.dataset.lpt; renderLive(); });
 $('lpBody').addEventListener('input',e=>{ const k=e.target.dataset.pg; if(!k) return; const T=progTargets(); if(!T.length) return; LIVE.src='test';
