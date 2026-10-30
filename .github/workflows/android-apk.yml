@@ -1,58 +1,29 @@
-name: Android APK derle
-on: workflow_dispatch
-permissions:
-  contents: write
-jobs:
-  apk:
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 22
-      - uses: actions/setup-java@v5
-        with:
-          distribution: temurin
-          java-version: 21
-      - run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
-      - name: Imza anahtari (her derlemede ayni imza; guncelleme ustune kurulabilsin)
-        env:
-          KS: ${{ secrets.ANDROID_DEBUG_KEYSTORE }}
-        run: |
-          if [ -n "$KS" ]; then mkdir -p ~/.android && echo "$KS" | base64 -d > ~/.android/debug.keystore && echo "Sabit imza kullaniliyor"; else echo "UYARI: ANDROID_DEBUG_KEYSTORE tanimli degil; APK her derlemede farkli imzalanir"; fi
-      - run: npm install
-      - run: npm run vendor
-      - run: node scripts/fixtures.mjs
-      - uses: actions/cache@v4
-        with:
-          path: gdtf-cache
-          key: gdtf-${{ runner.os }}-${{ github.run_id }}
-          restore-keys: gdtf-${{ runner.os }}-
-      - run: node scripts/gdtf.mjs
-        env:
-          GDTF_USER: ${{ secrets.GDTF_USER }}
-          GDTF_PASS: ${{ secrets.GDTF_PASS }}
-      - name: Surum numarasi
-        id: v
-        run: node -e "const p=require('./package.json'),[a,b]=p.version.split('.'),v=a+'.'+b+'.'+process.env.GITHUB_RUN_NUMBER,fs=require('fs');fs.writeFileSync('www/build-info.js','window.BUILD_INFO='+JSON.stringify({v,platform:'android',repo:process.env.GITHUB_REPOSITORY})+';');fs.appendFileSync(process.env.GITHUB_OUTPUT,'v='+v+'\n');console.log('Surum',v)"
-      - run: npx cap add android
-      - run: sed -i "s/versionCode [0-9]*/versionCode ${{ github.run_number }}/; s/versionName \"[^\"]*\"/versionName \"${{ steps.v.outputs.v }}\"/" android/app/build.gradle
-      - run: npx capacitor-assets generate --android --iconBackgroundColor '#16191D' --iconBackgroundColorDark '#16191D' --splashBackgroundColor '#16191D' --splashBackgroundColorDark '#16191D'
-      - run: npx cap sync android
-      - run: cd android && chmod +x gradlew && ./gradlew assembleDebug
-      - run: cp android/app/build/outputs/apk/debug/app-debug.apk isik-plani.apk
-      - uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ steps.v.outputs.v }}
-          name: Işık Planı ${{ steps.v.outputs.v }} (Android)
-          files: |
-            isik-plani.apk
-            ofl-kutuphane.json
-            gdtf-kutuphane.json
-      - uses: actions/upload-artifact@v4
-        with:
-          name: isik-plani-android
-          path: |
-            isik-plani.apk
-            ofl-kutuphane.json
-            gdtf-kutuphane.json
+{
+  "name": "isik-plani",
+  "version": "4.9.0",
+  "private": true,
+  "description": "Işık Planı – sahne ışık planı ve rider çizimi (iOS / Android)",
+  "scripts": {
+    "vendor": "node scripts/vendor.mjs",
+    "assets": "npx capacitor-assets generate --iconBackgroundColor #16191D --iconBackgroundColorDark #16191D --splashBackgroundColor #16191D --splashBackgroundColorDark #16191D",
+    "fixtures": "node scripts/fixtures.mjs",
+    "sync": "npm run vendor && npm run fixtures && npx cap sync"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/app": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/filesystem": "^7.0.0",
+    "@capacitor/ios": "^7.0.0",
+    "@capacitor/share": "^7.0.0",
+    "@fontsource/barlow": "^5.0.0",
+    "@fontsource/barlow-condensed": "^5.0.0",
+    "jspdf": "2.5.1",
+    "jszip": "3.10.1",
+    "three": "0.128.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.0",
+    "@capacitor/cli": "^7.0.0"
+  }
+}
