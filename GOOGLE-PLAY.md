@@ -22,7 +22,8 @@ kapalı test (alpha) kanalına gider. 12-15 Gmail adresi topla (biri çıkarsa s
 
 ## 2. Uygulamayı oluştur
 
-Tüm uygulamalar → Uygulama oluştur → Ad: "Işık Planı – Rider Çizimi", dil Türkçe,
+Tüm uygulamalar → Uygulama oluştur → Ad: (yeni İngilizce ad), varsayılan dil English (United States),
+sonra Mağaza varlığı → Çeviriler ile Türkçe girişi ekle (metinler store/magaza-metinleri.md),
 Uygulama, Ücretsiz → beyanları işaretle → Oluştur.
 
 ## 3. Kontrol panelindeki formlar
