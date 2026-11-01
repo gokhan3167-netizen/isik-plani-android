@@ -1,8 +1,8 @@
 {
   "name": "isik-plani",
-  "version": "5.9.3",
+  "version": "6.0.0",
   "private": true,
-  "description": "Işık Planı – sahne ışık planı ve rider çizimi (iOS / Android)",
+  "description": "Ghostlight – stage lighting plot & rider (iOS / Android)",
   "scripts": {
     "vendor": "node scripts/vendor.mjs",
     "assets": "npx capacitor-assets generate --iconBackgroundColor #16191D --iconBackgroundColorDark #16191D --splashBackgroundColor #16191D --splashBackgroundColorDark #16191D",

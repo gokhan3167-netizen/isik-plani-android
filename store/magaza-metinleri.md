@@ -1,7 +1,7 @@
 # Mağaza metinleri
 
 ## Ortak
-- **Uygulama adı:** Işık Planı – Rider Çizimi  (25 karakter; App Store sınırı 30)
+- **Uygulama adı:** Ghostlight: Işık Planı & Rider  (30 karakter; sınır 30)
 - **Kategori:** Verimlilik (Productivity)
 - **Yaş sınırı:** 4+ / Herkes
 - **Fiyat:** Ücretsiz (istersen ücretli yapabilirsin)
@@ -18,7 +18,7 @@ Sahne ışık planı ve rider
 ışık,sahne,rider,dmx,tiyatro,konser,projektör,gel,lee,rosco,plot,lighting
 
 ## Uzun açıklama (Türkçe)
-Işık Planı, tiyatro, konser ve turne prodüksiyonları için ışık planını ve teknik rider’ı telefonda ya da tablette hızlıca hazırlamanı sağlar.
+Ghostlight, tiyatro, konser ve turne prodüksiyonları için ışık planını ve teknik rider’ı telefonda ya da tablette hızlıca hazırlamanı sağlar.
 
 ÇİZİM
 • Sahne ölçüsünü gir, köprü ve kuleleri ekle; tek seferde eşit aralıklı çoklu köprü kur.
@@ -58,11 +58,11 @@ GÖRÜNÜMLER
 Türkçe ve İngilizce kullanılabilir. Hesap gerektirmez, internetsiz çalışır, hiçbir veri toplamaz.
 
 ## English listing (Play Console › Store listing › Add translation › English (United States))
-- **App name (30):** Işık Planı – Lighting Plot
+- **App name (30):** Ghostlight – Lighting Plot
 - **Short description (80):** Stage lighting plots, patch and riders: pipes, fixtures, DMX, gels, 3D, PDF.
 
 ### Full description
-Işık Planı is a lighting plot and rider tool built by a working theatre lighting designer, for touring shows, rehearsals and production meetings. Draw the plot on your phone or tablet, patch it, and send a professional rider in minutes.
+Ghostlight is a lighting plot and rider tool built by a working theatre lighting designer, for touring shows, rehearsals and production meetings. Draw the plot on your phone or tablet, patch it, and send a professional rider in minutes.
 
 PLOT
 • Set the stage size or start from a template: proscenium, black box, thrust, arena, traverse or concert stage, all scalable.

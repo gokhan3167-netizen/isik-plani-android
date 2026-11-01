@@ -1,6 +1,6 @@
 {
-  "appId": "com.isikplani.app",
-  "appName": "Işık Planı",
+  "appId": "com.gulcebi.ghostlight",
+  "appName": "Ghostlight",
   "webDir": "www",
   "ios": {
     "contentInset": "never"
