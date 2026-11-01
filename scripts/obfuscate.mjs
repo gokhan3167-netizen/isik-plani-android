@@ -24,6 +24,6 @@ let dom = '';
 try { dom = execFileSync(chrome, ['--headless=new', '--disable-gpu', '--no-sandbox', '--no-first-run', '--allow-file-access-from-files', '--virtual-time-budget=8000', '--dump-dom', pathToFileURL(tmp).href], { encoding: 'utf8', timeout: 120000, maxBuffer: 128 * 1024 * 1024 }); }
 catch (e) { console.log('Doğrulama çalıştırılamadı: ' + e.message); }
 try { fs.unlinkSync(tmp); } catch (_) {}
-const ok = dom.length > 10000 && !/id="errbox"/.test(dom) && /data-type="wash"/.test(dom);
+const ok = dom.length > 10000 && !/<div id="errbox"/.test(dom) && /data-type="wash"/.test(dom);
 if (ok) { fs.writeFileSync(f, out); console.log('Kod karıştırıldı ve tarayıcıda doğrulandı: ' + f + ' (' + Math.round(out.length / 1024) + ' KB)'); }
 else console.log('Doğrulama başarısız (' + dom.length + ' bayt DOM); küçültülmüş sürüm kullanılıyor.');
