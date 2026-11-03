@@ -1,7 +1,7 @@
-# Ghostlight – Google Play'e yayınlama rehberi
+# LampOff – Google Play'e yayınlama rehberi
 
-Paket adı: `com.gulcebi.ghostlight` (bir kez yayınlanınca değişmez)
-Destek e-postası: isikplani.destek@gmail.com
+Paket adı: `com.gulcebi.lampoff` (bir kez yayınlanınca değişmez)
+Destek e-postası: lampoff.destek@gmail.com
 Gizlilik politikası: Netlify sitenin adresi + `/gizlilik.html`
 (ör. https://SITE-ADIN.netlify.app/gizlilik.html)
 
@@ -14,15 +14,15 @@ kapalı test (alpha) kanalına gider. 12-15 Gmail adresi topla (biri çıkarsa s
 
 ## 1. Geliştirici hesabı (bir kez)
 
-1. play.google.com/console → isikplani.destek@gmail.com ile giriş → Kişisel hesap.
+1. play.google.com/console → lampoff.destek@gmail.com ile giriş → Kişisel hesap.
 2. 25 $ tek seferlik ücret, kimlik doğrulama, telefon doğrulaması, bir Android telefonda
    Play Console uygulamasıyla cihaz doğrulaması.
-3. Geliştirici adı mağazada görünür ("Gökhan Gülçebi" ya da "Ghostlight").
+3. Geliştirici adı mağazada görünür ("Gökhan Gülçebi" ya da "LampOff").
    Uygulama ücretsiz olduğu sürece ev adresin herkese gösterilmez.
 
 ## 2. Uygulamayı oluştur
 
-Tüm uygulamalar → Uygulama oluştur → Ad: "Ghostlight – Lighting Plot" (en fazla 30 karakter), varsayılan dil English (United States),
+Tüm uygulamalar → Uygulama oluştur → Ad: "LampOff – Lighting Plot" (en fazla 30 karakter), varsayılan dil English (United States),
 sonra Mağaza varlığı → Çeviriler ile Türkçe girişi ekle (metinler store/magaza-metinleri.md),
 Uygulama, Ücretsiz → beyanları işaretle → Oluştur.
 
@@ -51,7 +51,7 @@ analiz, reklam yok; online kütüphane isteklerinde kişisel veri gönderilmiyor
 - Simge: `store/play-icon-512.png`
 - Öne çıkan grafik: `store/play-feature-graphic-1024x500.png`
 - Telefon ekran görüntüleri: `store/play-ekran-1..6.png`
-- Kategori: Verimlilik · E-posta: isikplani.destek@gmail.com
+- Kategori: Verimlilik · E-posta: lampoff.destek@gmail.com
 
 ## 5. GitHub secret'ları (bir kez)
 
@@ -63,7 +63,7 @@ Bu .txt dosyalarını asla depoya yükleme; yedeğini USB'de / şifre yöneticis
 ## 6. İlk derleme ve ilk yükleme (elle)
 
 1. GitHub → Actions → "Android APK derle" → Run workflow → kanal: alpha → Run.
-2. Bitince Artifacts'tan `ghostlight-play-aab` indir, zipten `.aab` çıkar.
+2. Bitince Artifacts'tan `lampoff-play-aab` indir, zipten `.aab` çıkar.
 3. Play Console → Test ve yayınla → Kapalı test → Alpha → Yönet:
    - Test kullanıcıları: e-posta listesi oluştur, 12+ Gmail adresi ekle.
    - Ülkeler: Türkiye (ve istediğin diğerleri).
@@ -77,7 +77,7 @@ Bu .txt dosyalarını asla depoya yükleme; yedeğini USB'de / şifre yöneticis
 1. console.cloud.google.com → proje → "Google Play Android Developer API"yi etkinleştir.
 2. IAM → Hizmet hesapları → oluştur → Anahtarlar → JSON indir.
 3. Play Console → Kullanıcılar ve izinler → hizmet hesabının e-postasını davet et →
-   Ghostlight için "Test kanallarına sürüm yayınla" izni.
+   LampOff için "Test kanallarına sürüm yayınla" izni.
 4. JSON'un tamamını GitHub secret `PLAY_SERVICE_ACCOUNT` olarak ekle.
 Sonra Actions'ta kanal seçip çalıştırmak yeterli.
 

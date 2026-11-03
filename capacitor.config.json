@@ -1,6 +1,6 @@
 {
-  "appId": "com.gulcebi.ghostlight",
-  "appName": "Ghostlight",
+  "appId": "com.gulcebi.lampoff",
+  "appName": "LampOff",
   "webDir": "www",
   "ios": {
     "contentInset": "never"

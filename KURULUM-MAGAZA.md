@@ -1,4 +1,4 @@
-# Ghostlight – App Store ve Google Play’e yükleme rehberi
+# LampOff – App Store ve Google Play’e yükleme rehberi
 
 Bu klasör, programın **Capacitor** ile hazırlanmış telefon uygulaması projesidir. Aynı kod hem iPhone hem Android uygulamasına dönüşür. Aşağıdaki adımları bir kere yaptıktan sonra güncellemeler çok daha kısa sürer.
 
@@ -30,7 +30,7 @@ npm run assets           (ikon ve açılış ekranlarını otomatik üretir)
 npx cap sync
 ```
 
-**Önemli:** `capacitor.config.json` içindeki `"appId": "com.gulcebi.ghostlight"` mağazada uygulamanın kimliğidir ve sonradan değiştirilemez. Kendine özel bir şey yap, ör. `com.gokhanadin.isikplani`. Değiştirdikten sonra `npx cap sync` çalıştır (platformları eklemeden önce değiştirmek en iyisi).
+**Önemli:** `capacitor.config.json` içindeki `"appId": "com.gulcebi.lampoff"` mağazada uygulamanın kimliğidir ve sonradan değiştirilemez. Kendine özel bir şey yap, ör. `com.gokhanadin.isikplani`. Değiştirdikten sonra `npx cap sync` çalıştır (platformları eklemeden önce değiştirmek en iyisi).
 
 ## 2. Android → Google Play
 1. `npx cap open android` → Android Studio açılır.
