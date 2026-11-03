@@ -64,13 +64,13 @@ jobs:
       - run: npx capacitor-assets generate --android --iconBackgroundColor '#16191D' --iconBackgroundColorDark '#16191D' --splashBackgroundColor '#16191D' --splashBackgroundColorDark '#16191D'
       - run: npx cap sync android
       - run: cd android && chmod +x gradlew && ./gradlew assembleDebug
-      - run: cp android/app/build/outputs/apk/debug/app-debug.apk isik-plani.apk
+      - run: cp android/app/build/outputs/apk/debug/app-debug.apk ghostlight.apk
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.v.outputs.v }}
-          name: Işık Planı ${{ steps.v.outputs.v }} (Android)
+          name: Ghostlight ${{ steps.v.outputs.v }} (Android)
           files: |
-            isik-plani.apk
+            ghostlight.apk
             ofl-kutuphane.json
             gdtf-kutuphane.json
       # ---------- Google Play (AAB) ----------
@@ -84,29 +84,29 @@ jobs:
           npx cap copy android
           cd android && ./gradlew bundleRelease && cd ..
           echo "$KS" | base64 -d > upload.jks
-          cp android/app/build/outputs/bundle/release/app-release.aab isik-plani-play.aab
-          jarsigner -sigalg SHA256withRSA -digestalg SHA-256 -keystore upload.jks -storepass "$PW" -keypass "$PW" isik-plani-play.aab upload
-          jarsigner -verify isik-plani-play.aab
+          cp android/app/build/outputs/bundle/release/app-release.aab ghostlight-play.aab
+          jarsigner -sigalg SHA256withRSA -digestalg SHA-256 -keystore upload.jks -storepass "$PW" -keypass "$PW" ghostlight-play.aab upload
+          jarsigner -verify ghostlight-play.aab
           rm -f upload.jks
       - name: Google Play'e yukle
         if: env.HAS_PLAY_KEY == 'true' && env.HAS_PLAY_API == 'true'
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT }}
-          packageName: com.isikplani.app
-          releaseFiles: isik-plani-play.aab
+          packageName: com.gulcebi.ghostlight
+          releaseFiles: ghostlight-play.aab
           releaseName: ${{ steps.v.outputs.v }}
           track: ${{ inputs.track || 'alpha' }}
           status: completed
       - uses: actions/upload-artifact@v4
         if: env.HAS_PLAY_KEY == 'true'
         with:
-          name: isik-plani-play-aab
-          path: isik-plani-play.aab
+          name: ghostlight-play-aab
+          path: ghostlight-play.aab
       - uses: actions/upload-artifact@v4
         with:
-          name: isik-plani-android
+          name: ghostlight-android
           path: |
-            isik-plani.apk
+            ghostlight.apk
             ofl-kutuphane.json
             gdtf-kutuphane.json
