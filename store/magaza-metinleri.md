@@ -77,7 +77,7 @@ FIXTURE LIBRARY
 • Import GDTF, Open Fixture Library (.json) and QLC+ (.qxf) files, or build your own symbols.
 
 PATCH & NUMBERING
-• Unit numbers per fixture type (W1, S3, ER5), console channels and purpose/focus notes.
+• Unit numbers per fixture type (W1, S3, ER5), console channels and focus notes.
 • Universe, DMX address and footprint; batch addressing remembers the next free address.
 • Editable patch list with instant conflict detection.
 
