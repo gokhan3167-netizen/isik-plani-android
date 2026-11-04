@@ -1,6 +1,6 @@
 // Çevrimdışı çalışma: uygulama dosyalarını ve yazı tipi / kütüphaneleri önbelleğe alır.
 // Yeni sürüm yüklediğinde SURUM değerini değiştir.
-const SURUM = 'lampoff-v782';
+const SURUM = 'lampoff-v783';
 const CEKIRDEK = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-180.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(SURUM).then(c => c.addAll(CEKIRDEK)));
@@ -15,7 +15,7 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   // Sayfanın kendisi: önce internet (güncel sürüm), yoksa önbellek
   if (req.mode === 'navigate') {
-    e.respondWith(fetch(req).then(res => { const c = res.clone(); caches.open(SURUM).then(x => x.put('./index.html', c)); return res; })
+    e.respondWith(fetch(new Request(req.url, { cache: 'no-store', credentials: 'same-origin' })).then(res => { const c = res.clone(); caches.open(SURUM).then(x => x.put('./index.html', c)); return res; })
       .catch(() => caches.match('./index.html')));
     return;
   }
