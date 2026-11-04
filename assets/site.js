@@ -37,3 +37,22 @@ document.addEventListener('click',e=>{
   P.append(bm,pl,gl); setTimeout(()=>{ bm.remove(); pl.remove(); gl.remove(); },1500);
 },{passive:true});
 })();
+(()=>{ const mn=document.getElementById('mn'), bg=document.querySelector('.burger');
+ const close=()=>document.querySelectorAll('.dd.open').forEach(d=>{ d.classList.remove('open'); d.querySelector('.ddb').setAttribute('aria-expanded','false'); });
+ const wide=()=>!matchMedia('(max-width:1000px)').matches;
+ document.querySelectorAll('.dd').forEach(d=>{ const b=d.querySelector('.ddb'); let t;
+   b.addEventListener('click',e=>{ e.stopPropagation(); const o=!d.classList.contains('open'); if(wide()) close(); d.classList.toggle('open',o); b.setAttribute('aria-expanded',o); });
+   d.addEventListener('mouseenter',()=>{ if(!wide()||!matchMedia('(hover:hover)').matches) return; clearTimeout(t); close(); d.classList.add('open'); b.setAttribute('aria-expanded','true'); });
+   d.addEventListener('mouseleave',()=>{ if(!wide()||!matchMedia('(hover:hover)').matches) return; t=setTimeout(()=>{ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); },160); }); });
+ document.addEventListener('click',e=>{ if(wide()&&!e.target.closest('.dd')) close(); });
+ document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ close(); if(mn&&mn.classList.contains('open')) bg.click(); } });
+ if(bg&&mn) bg.addEventListener('click',()=>{ const o=!mn.classList.contains('open'); mn.classList.toggle('open',o); bg.setAttribute('aria-expanded',o); document.body.classList.toggle('navopen',o); });
+ if(mn) mn.addEventListener('click',e=>{ if(e.target.closest('a')&&mn.classList.contains('open')){ mn.classList.remove('open'); bg.setAttribute('aria-expanded','false'); document.body.classList.remove('navopen'); } });
+ const tl=document.querySelector('.tabs');
+ if(tl){ const bs=[...tl.querySelectorAll('[role=tab]')];
+   const sel=k=>{ const b=bs.find(x=>x.dataset.k===k)||bs[0]; bs.forEach(x=>{ const on=x===b; x.setAttribute('aria-selected',on); x.tabIndex=on?0:-1; document.getElementById(x.getAttribute('aria-controls')).hidden=!on; }); };
+   bs.forEach(b=>b.addEventListener('click',()=>{ sel(b.dataset.k); try{ history.replaceState(null,'','#'+b.dataset.k); }catch(_){} }));
+   tl.addEventListener('keydown',e=>{ const i=bs.findIndex(x=>x.getAttribute('aria-selected')==='true'); if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ const n=bs[(i+(e.key==='ArrowRight'?1:-1)+bs.length)%bs.length]; n.click(); n.focus(); } });
+   const h=()=>{ const k=(location.hash||'').slice(1); if(k) sel(k); else { const ua=navigator.userAgent; sel(/android/i.test(ua)?'android':/iphone|ipad|macintosh.*mobile/i.test(ua)?'ios':/mac/i.test(ua)?'mac':/win/i.test(ua)?'windows':'web'); } };
+   h(); addEventListener('hashchange',h); }
+})();
