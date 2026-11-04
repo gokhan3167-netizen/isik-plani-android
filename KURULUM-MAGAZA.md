@@ -30,7 +30,7 @@ npm run assets           (ikon ve açılış ekranlarını otomatik üretir)
 npx cap sync
 ```
 
-**Önemli:** `capacitor.config.json` içindeki `"appId": "com.gulcebi.lampoff"` mağazada uygulamanın kimliğidir ve sonradan değiştirilemez. Kendine özel bir şey yap, ör. `com.gokhanadin.lampoff`. Değiştirdikten sonra `npx cap sync` çalıştır (platformları eklemeden önce değiştirmek en iyisi).
+**Önemli:** `capacitor.config.json` içindeki `"appId": "com.lampofflighting.app"` mağazada uygulamanın kimliğidir ve sonradan değiştirilemez. Kendine özel bir şey yap, ör. `com.gokhanadin.lampoff`. Değiştirdikten sonra `npx cap sync` çalıştır (platformları eklemeden önce değiştirmek en iyisi).
 
 ## 2. Android → Google Play
 1. `npx cap open android` → Android Studio açılır.

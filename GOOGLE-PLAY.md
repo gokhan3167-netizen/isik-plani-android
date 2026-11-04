@@ -1,6 +1,6 @@
 # LampOff – Google Play'e yayınlama rehberi
 
-Paket adı: `com.gulcebi.lampoff` (bir kez yayınlanınca değişmez)
+Paket adı: `com.lampofflighting.app` (bir kez yayınlanınca değişmez)
 Destek e-postası: lampoff.destek@gmail.com
 Gizlilik politikası: https://gokhan3167-netizen.github.io/isik-plani-android/gizlilik.html
 
