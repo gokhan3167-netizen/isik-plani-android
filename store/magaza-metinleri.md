@@ -5,7 +5,7 @@
 - **Kategori:** Verimlilik (Productivity)
 - **Yaş sınırı:** 4+ / Herkes
 - **Fiyat:** Ücretsiz (istersen ücretli yapabilirsin)
-- **Gizlilik politikası adresi:** https://SITE-ADIN.netlify.app/gizlilik.html (Netlify paketinde hazır)
+- **Gizlilik politikası adresi:** https://gokhan3167-netizen.github.io/isik-plani-android/gizlilik.html (alan adı bağlanınca: https://lampofflighting.com/gizlilik.html; İngilizce: /en/privacy.html)
 - **Destek e-postası:** lampoff.destek@gmail.com
 
 ## Kısa açıklama (Google Play, en fazla 80 karakter)
@@ -26,7 +26,7 @@ LampOff, tiyatro, konser ve turne prodüksiyonları için ışık planını ve t
 • Sağ tık / basılı tut menüsüyle kopyala, yapıştır, çoğalt.
 • Parmakla yakınlaştır, kaydır; çoklu seçimle grupları birlikte taşı.
 • Hazır sahneler: İtalyan, black box, thrust, arena, traverse, konser; ölçüyü gir, köprüler orantılı kurulur.
-• WYSIWYG ve benzeri programlardan PDF plan içe aktar: lejant okunur, projektörler tipleriyle yerleşir.
+• Başka ışık programlarından çıkan PDF planları içe aktar: sembol açıklamaları okunur, projektörler tipleriyle yerleşir.
 
 PROJEKTÖR KÜTÜPHANESİ
 • Open Fixture Library’nin 650’den fazla cihazı ve 290’dan fazla yerleşik cihaz uygulamanın içinde; internet gerekmez.
@@ -48,10 +48,18 @@ RENK FİLTRESİ VE GOBO
 
 GÖRÜNÜMLER
 • Üstten plan, önden ve yandan kesit, çizim tarzında perspektif ve 3D sahne görünümü.
+• 3D'de gerçekçi hüzme, renk, gobo ve duman; perde ve dekora vuran ışık izi; ambiyans kapatılınca tam karanlık.
+• Mini joystick ile pan/tilt (540°/270°), seçilenleri tek noktaya topla.
+• Yandan kesitte görüş çizgileri: ilk ve son sıradan görünen köprü ve projektörler işaretlenir.
 • Katmanlar: dekor, oyuncular, köprüler ve ışıkları ayrı ayrı gizle ya da kilitle.
 
+FOTOMETRİ VE YÜK
+• Her projektör için atış mesafesi, ışık çapı ve yaklaşık lüks.
+• Projektör ağırlıkları ile köprü yükü ve güç dağılımı.
+
 ÇIKTI
-• Tek dosyada rider PDF: ölçekli plan, malzeme ve güç listesi, kanal ve filtre listesi.
+• Tek dosyada rider PDF: ölçekli plan, malzeme ve güç listesi, kanal ve filtre listesi, projektör çizelgesi (instrument schedule), magic sheet, köprü ölçüleri ve yükleri.
+• Revizyonlar: sürüm kaydet, iki sürümü karşılaştır, değişenleri planda gör.
 • PDF ve PNG plan: semboller, malzeme listesi, köprü ölçüleri, filtre listesi ve antetle.
 • Patch listesi (CSV), USITT ASCII, MVR (grandMA3, ETC Eos, Vectorworks, Capture) ve grandMA2 patch (XML); WhatsApp ya da e-postayla paylaş.
 
@@ -84,12 +92,16 @@ PATCH & NUMBERING
 COLOR, FOCUS & BEAMS
 • Lee and Rosco gels; symbols take the gel color. Gobo notes and an automatic gel cut list.
 • Drag the focus point to aim a fixture; aim a whole selection together.
-• Front and side sections, perspective and 3D views with beams, color, gobos and haze.
+• Front and side sections, perspective and 3D views with realistic beams, color, gobos and haze; beams land on drapes and scenery, and the house goes fully dark.
+• Mini joystick for pan/tilt (540°/270°); gather a selection onto one point.
+• Sightlines in the side section flag pipes and units visible from the first and last rows.
+• Photometrics per unit: throw, beam diameter and approximate lux; pipe loads from fixture weights.
 
 RIDER & EXCHANGE
-• One-file rider PDF: scaled plot, equipment list, total power and amps per phase, pipe dimensions, channel/patch list, gel cut list and notes.
-• PDF/PNG plot, CSV patch list, USITT ASCII, MVR (grandMA3, ETC Eos, Vectorworks, Capture) and grandMA2 patch.
-• Import PDF plots from WYSIWYG and similar programs: the legend is read and fixtures are placed by type.
+• One-file rider PDF: scaled plot, equipment list, total power and amps per phase, pipe dimensions and loads, channel/patch list, instrument schedule, magic sheet, gel cut list and notes.
+• Revisions: save versions, compare two, highlight what changed on the plot.
+• PDF/PNG plot, CSV patch list, USITT ASCII, MVR in both directions (grandMA3, ETC Eos, Vectorworks, Capture) and grandMA2 patch.
+• Import PDF plots from other lighting programs: the symbol key is read and fixtures are placed by type.
 
 Available in English and Turkish. No account, works offline, collects no data.
 
