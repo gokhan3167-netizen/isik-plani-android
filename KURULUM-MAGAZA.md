@@ -15,7 +15,7 @@ Hesap ücretlerini ve şartlarını kayıt olurken kontrol et; zaman zaman deği
 ## 0. Hızlı yol: Android APK'yı GitHub'a ürettir (bilgisayara hiçbir şey kurmadan)
 1. Bu klasörün içindekileri GitHub'da yeni bir depoya yükle (`.github` klasörü dahil).
 2. **Actions › Android APK derle › Run workflow**.
-3. 10–15 dakika sonra çalışmanın sayfasının altındaki **Artifacts** bölümünden `isik-plani-android` dosyasını indir; içinde **isik-plani.apk** var.
+3. 10–15 dakika sonra çalışmanın sayfasının altındaki **Artifacts** bölümünden `lampoff-android` dosyasını indir; içinde **lampoff.apk** var.
 4. APK'yı telefona gönder (WhatsApp, Drive, USB), dokun, "Bilinmeyen kaynaklardan yüklemeye izin ver" de, kur.
 Bu APK test/ekip içi kullanım içindir. Google Play'e yüklemek için aşağıdaki 2. adımdaki imzalı .aab gerekir.
 
@@ -30,7 +30,7 @@ npm run assets           (ikon ve açılış ekranlarını otomatik üretir)
 npx cap sync
 ```
 
-**Önemli:** `capacitor.config.json` içindeki `"appId": "com.gulcebi.lampoff"` mağazada uygulamanın kimliğidir ve sonradan değiştirilemez. Kendine özel bir şey yap, ör. `com.gokhanadin.isikplani`. Değiştirdikten sonra `npx cap sync` çalıştır (platformları eklemeden önce değiştirmek en iyisi).
+**Önemli:** `capacitor.config.json` içindeki `"appId": "com.gulcebi.lampoff"` mağazada uygulamanın kimliğidir ve sonradan değiştirilemez. Kendine özel bir şey yap, ör. `com.gokhanadin.lampoff`. Değiştirdikten sonra `npx cap sync` çalıştır (platformları eklemeden önce değiştirmek en iyisi).
 
 ## 2. Android → Google Play
 1. `npx cap open android` → Android Studio açılır.

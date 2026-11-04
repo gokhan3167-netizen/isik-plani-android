@@ -304,7 +304,7 @@ try{
   mkdirSync(outDir,{recursive:true});
   if(FX_DETAIL){ const a=fxpWriteShards(outDir+'/fx',PROF), b=fxpWriteShards(outDir+'/fx',IMGS); console.log(`Orijinal özellikler: ${Object.values(PROF).reduce((n,o)=>n+Object.keys(o).length,0)} cihaz, ${Object.values(IMGS).reduce((n,o)=>n+Object.keys(o).length,0)} gobo resmi (${Math.round((a.bytes+b.bytes)/1048576)} MB)`); }
   writeFileSync(outDir+'/gdtf-library.js','/* Kaynak: GDTF Share (gdtf-share.com) — izinle — '+date+' */\nwindow.GDTF_LIB='+JSON.stringify({v:1,date,lib:out})+';\n');
-  writeFileSync('gdtf-kutuphane.json',JSON.stringify({kind:'isik-plani-kutuphane',source:'GDTF Share (gdtf-share.com)',date,count:out.length,lib:out.map(e=>{ const r=Object.assign({},e); delete r.fp; delete r.th; return r; })}));
+  writeFileSync('gdtf-kutuphane.json',JSON.stringify({kind:'lampoff-kutuphane',source:'GDTF Share (gdtf-share.com)',date,count:out.length,lib:out.map(e=>{ const r=Object.assign({},e); delete r.fp; delete r.th; return r; })}));
   if(skipped) console.log(`Süre sınırı: ${skipped} cihaz bu derlemede atlandı, sonraki derlemelerde eklenecek.`);
   console.log(`${out.length} cihaz kaydedildi (${dl} yeni indirme, ${bad} okunamadı): ${outDir}/gdtf-library.js ve gdtf-kutuphane.json`);
 }catch(e){ console.warn('GDTF kütüphanesi oluşturulamadı ('+e.message+'). Program diğer kütüphanelerle çalışmaya devam eder.'); process.exit(0); }

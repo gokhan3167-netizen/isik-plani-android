@@ -341,7 +341,7 @@ try {
   if (FX_DETAIL) { const a = fxpWriteShards(outDir + '/fx', PROF); console.log(`Orijinal özellikler (OFL): ${Object.values(PROF).reduce((n, o) => n + Object.keys(o).length, 0)} cihaz, ${Math.round(a.bytes / 1024)} KB`); }
   writeFileSync(outDir + '/ofl-library.js', '/* Kaynak: Open Fixture Library (open-fixture-library.org), MIT lisansı — ' + date + ' */\nwindow.OFL_LIB=' + JSON.stringify({ v: 2, date, lib: out }) + ';\n');
   // Her cihaza (telefon/tarayıcı dahil) yüklenebilen ayrı kütüphane dosyası
-  writeFileSync('ofl-kutuphane.json', JSON.stringify({ kind: 'isik-plani-kutuphane', source: 'Open Fixture Library (open-fixture-library.org, MIT)', date, count: out.length,
+  writeFileSync('ofl-kutuphane.json', JSON.stringify({ kind:'lampoff-kutuphane', source: 'Open Fixture Library (open-fixture-library.org, MIT)', date, count: out.length,
     lib: out.map(e => { const r = { b: e.b, m: e.m, t: e.t, modes: e.modes }; if (e.pr) r.pr = e.pr; if (e.tr) r.tr = e.tr; if (e.ba) r.ba = e.ba; if (Array.isArray(e.dims) && e.dims.length >= 3) r.sz = [e.dims[0] / 1000, e.dims[2] / 1000, e.dims[1] / 1000]; return r; }) }));
   console.log(`${out.length} cihaz kaydedildi: ${outDir}/ofl-library.js ve ofl-kutuphane.json`);
 } catch (e) {
