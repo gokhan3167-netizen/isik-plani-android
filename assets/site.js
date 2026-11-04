@@ -73,7 +73,7 @@ document.querySelectorAll('[data-joy]').forEach(B=>{const S=B.querySelector('svg
     if(dy<-1e-4){const t=(40-O[1])/dy,x=O[0]+dx*t;if(x>=56&&x<=640)tr(t,x,40,'k')}
     if(dx>1e-4){const t=(640-O[0])/dx;tr(t,640,O[1]+dy*t,'h')}return best};
   const fm=v=>(Math.round(v*10)/10).toLocaleString(document.documentElement.lang||'tr');
-  const draw=()=>{const p=pan*Math.PI/180,t=tilt*Math.PI/180,hx=-Math.sin(t)*Math.cos(p),vy=Math.cos(t),lz=Math.sin(t)*Math.sin(p),n2=Math.hypot(hx,vy);
+  const draw=()=>{const p=pan*Math.PI/180,t=tilt*Math.PI/180,hx=-Math.sin(t)*Math.cos(p),vy=Math.cos(t),lz=Math.sin(t)*Math.sin(p),n2=Math.hypot(hx,vy);const nn=n2||1;O[0]=460+28*hx/nn;O[1]=100+28*vy/nn;
     head.setAttribute('transform',`rotate(${(-Math.atan2(hx,vy)*180/Math.PI).toFixed(1)})`);
     const rot=(a)=>{const c=Math.cos(a),s=Math.sin(a);return [hx*c-vy*s,hx*s+vy*c]};const e1=rot(BA/2*n2),e2=rot(-BA/2*n2),c0=hitRay(hx,vy),a=hitRay(...e1),b=hitRay(...e2);
     if(a&&b&&c0&&n2>.08){let pts=[O,[a.x,a.y]];if(a.s!==b.s){const cx=(a.s==='c'||b.s==='c')&&(a.s==='f'||b.s==='f')?[56,380]:(a.s==='c'||b.s==='c')&&(a.s==='k'||b.s==='k')?[56,40]:null;if(cx)pts.push(cx)}pts.push([b.x,b.y]);
