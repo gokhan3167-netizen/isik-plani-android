@@ -1,8 +1,9 @@
 # LampOff – Google Play'e yayınlama rehberi
 
 Paket adı: `com.lampofflighting.app` (bir kez yayınlanınca değişmez)
-Destek e-postası: lampoff.destek@gmail.com
-Gizlilik politikası: https://gokhan3167-netizen.github.io/isik-plani-android/gizlilik.html
+Destek e-postası: lampoff.info@gmail.com
+Gizlilik politikası: Netlify sitenin adresi + `/gizlilik.html`
+(ör. https://SITE-ADIN.netlify.app/gizlilik.html)
 
 ## 0. Önemli kural: 12 test kullanıcısı, 14 gün
 
@@ -13,7 +14,7 @@ kapalı test (alpha) kanalına gider. 12-15 Gmail adresi topla (biri çıkarsa s
 
 ## 1. Geliştirici hesabı (bir kez)
 
-1. play.google.com/console → lampoff.destek@gmail.com ile giriş → Kişisel hesap.
+1. play.google.com/console → lampoff.info@gmail.com ile giriş → Kişisel hesap.
 2. 25 $ tek seferlik ücret, kimlik doğrulama, telefon doğrulaması, bir Android telefonda
    Play Console uygulamasıyla cihaz doğrulaması.
 3. Geliştirici adı mağazada görünür ("Gökhan Gülçebi" ya da "LampOff").
@@ -29,7 +30,7 @@ Uygulama, Ücretsiz → beyanları işaretle → Oluştur.
 
 | Form | Cevap |
 |---|---|
-| Gizlilik politikası | https://gokhan3167-netizen.github.io/isik-plani-android/gizlilik.html |
+| Gizlilik politikası | https://SITE-ADIN.netlify.app/gizlilik.html |
 | Uygulama erişimi | Tüm işlevler özel erişim gerektirmeden kullanılabilir |
 | Reklamlar | Hayır |
 | İçerik derecelendirmesi | Kategori "Tüm diğer uygulama türleri"; şiddet, cinsellik, kumar, uyuşturucu, kullanıcılar arası iletişim, konum paylaşımı, dijital satın alma: hepsi Hayır → "Herkes / 3+" |
@@ -50,7 +51,7 @@ analiz, reklam yok; online kütüphane isteklerinde kişisel veri gönderilmiyor
 - Simge: `store/play-icon-512.png`
 - Öne çıkan grafik: `store/play-feature-graphic-1024x500.png`
 - Telefon ekran görüntüleri: `store/play-ekran-1..6.png`
-- Kategori: Verimlilik · E-posta: lampoff.destek@gmail.com
+- Kategori: Verimlilik · E-posta: lampoff.info@gmail.com
 
 ## 5. GitHub secret'ları (bir kez)
 
@@ -62,7 +63,7 @@ Bu .txt dosyalarını asla depoya yükleme; yedeğini USB'de / şifre yöneticis
 ## 6. İlk derleme ve ilk yükleme (elle)
 
 1. GitHub → Actions → "Android APK derle" → Run workflow → kanal: alpha → Run.
-2. Bitince Releases sayfasındaki son sürümden `lampoff-play.aab` dosyasını indir.
+2. Bitince Artifacts'tan `lampoff-play-aab` indir, zipten `.aab` çıkar.
 3. Play Console → Test ve yayınla → Kapalı test → Alpha → Yönet:
    - Test kullanıcıları: e-posta listesi oluştur, 12+ Gmail adresi ekle.
    - Ülkeler: Türkiye (ve istediğin diğerleri).

@@ -1,6 +1,6 @@
 LampOff
 © 2026 Gökhan Gülçebi. Tüm hakları saklıdır.
-İletişim / izin talepleri: lampoff.destek@gmail.com
+İletişim / izin talepleri: lampoff.info@gmail.com
 
 Bu yazılımın (kaynak kodu, arayüz tasarımı, simgeleri, metinleri ve
 belgeleri dahil) tüm fikri ve sınai hakları Gökhan Gülçebi'ye aittir.

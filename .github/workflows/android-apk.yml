@@ -60,7 +60,7 @@ jobs:
           sed -i 's/compileSdkVersion = [0-9]*/compileSdkVersion = 36/; s/targetSdkVersion = [0-9]*/targetSdkVersion = 36/; s/minSdkVersion = [0-9]*/minSdkVersion = 24/' android/variables.gradle
           echo "android.suppressUnsupportedCompileSdk=36" >> android/gradle.properties
           grep -E "compileSdk|targetSdk|minSdk" android/variables.gradle
-      - run: sed -i "s/versionCode [0-9]*/versionCode ${{ github.run_number }}/; s/versionName \"[^\"]*\"/versionName \"$(cat VERSION 2>/dev/null || echo ${{ steps.v.outputs.v }})\"/" android/app/build.gradle && grep -E "versionCode|versionName" android/app/build.gradle
+      - run: sed -i "s/versionCode [0-9]*/versionCode ${{ github.run_number }}/; s/versionName \"[^\"]*\"/versionName \"${{ steps.v.outputs.v }}\"/" android/app/build.gradle
       - run: npx capacitor-assets generate --android --iconBackgroundColor '#16191D' --iconBackgroundColorDark '#16191D' --splashBackgroundColor '#16191D' --splashBackgroundColorDark '#16191D'
       - run: npx cap sync android
       - run: cd android && chmod +x gradlew && ./gradlew assembleDebug
@@ -88,12 +88,6 @@ jobs:
           jarsigner -sigalg SHA256withRSA -digestalg SHA-256 -keystore upload.jks -storepass "$PW" -keypass "$PW" lampoff-play.aab upload
           jarsigner -verify lampoff-play.aab
           rm -f upload.jks
-      - name: AAB'yi surum sayfasina ekle (Play Console'a elle yuklemek icin)
-        if: env.HAS_PLAY_KEY == 'true'
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ steps.v.outputs.v }}
-          files: lampoff-play.aab
       - name: Google Play'e yukle
         if: env.HAS_PLAY_KEY == 'true' && env.HAS_PLAY_API == 'true'
         uses: r0adkll/upload-google-play@v1
