@@ -1,6 +1,6 @@
 // Çevrimdışı çalışma: uygulama dosyalarını ve yazı tipi / kütüphaneleri önbelleğe alır.
 // Yeni sürüm yüklediğinde SURUM değerini değiştir.
-const SURUM = 'lampoff-v770';
+const SURUM = 'lampoff-v780';
 const CEKIRDEK = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-180.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(SURUM).then(c => c.addAll(CEKIRDEK)));
