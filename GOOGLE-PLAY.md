@@ -2,7 +2,7 @@
 
 Paket adı: `com.lampofflighting.app` (bir kez yayınlanınca değişmez)
 Destek e-postası: lampoff.info@gmail.com
-Gizlilik politikası: https://gokhan3167-netizen.github.io/isik-plani-android/gizlilik.html
+Gizlilik politikası: https://gokhan3167-netizen.github.io/lampoff_android/gizlilik.html
 
 ## 0. Önemli kural: 12 test kullanıcısı, 14 gün
 
@@ -29,7 +29,7 @@ Uygulama, Ücretsiz → beyanları işaretle → Oluştur.
 
 | Form | Cevap |
 |---|---|
-| Gizlilik politikası | https://gokhan3167-netizen.github.io/isik-plani-android/gizlilik.html |
+| Gizlilik politikası | https://gokhan3167-netizen.github.io/lampoff_android/gizlilik.html |
 | Uygulama erişimi | Tüm işlevler özel erişim gerektirmeden kullanılabilir |
 | Reklamlar | Hayır |
 | İçerik derecelendirmesi | Kategori "Tüm diğer uygulama türleri"; şiddet, cinsellik, kumar, uyuşturucu, kullanıcılar arası iletişim, konum paylaşımı, dijital satın alma: hepsi Hayır → "Herkes / 3+" |

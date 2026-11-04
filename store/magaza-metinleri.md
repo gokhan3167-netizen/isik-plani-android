@@ -5,7 +5,7 @@
 - **Kategori:** Verimlilik (Productivity)
 - **Yaş sınırı:** 4+ / Herkes
 - **Fiyat:** Ücretsiz (istersen ücretli yapabilirsin)
-- **Gizlilik politikası adresi:** https://gokhan3167-netizen.github.io/isik-plani-android/gizlilik.html (alan adı bağlanınca: https://lampofflighting.com/gizlilik.html; İngilizce: /en/privacy.html)
+- **Gizlilik politikası adresi:** https://gokhan3167-netizen.github.io/lampoff_android/gizlilik.html (alan adı bağlanınca: https://lampofflighting.com/gizlilik.html; İngilizce: /en/privacy.html)
 - **Destek e-postası:** lampoff.info@gmail.com
 
 ## Kısa açıklama (Google Play, en fazla 80 karakter)
