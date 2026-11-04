@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lampofflighting.com/sitemap.xml
