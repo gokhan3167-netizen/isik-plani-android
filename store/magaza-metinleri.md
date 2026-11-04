@@ -119,7 +119,7 @@ This is a standalone offline drawing tool for stage lighting designers. No login
 
 ## Ekran görüntüleri ve tanıtım görseli
 Türkçe (varsayılan mağaza girişi): `play-ekran-1.png` … `play-ekran-6.png` (1080×1920) ve `play-feature-graphic-1024x500.png`.
-İngilizce çeviri: `en/play-en-ekran-1.png` … `en/play-en-ekran-6.png` ve `en/play-en-feature-1024x500.png`.
+İngilizce çeviri: `en/play-en-ekran-1.png` … `en/play-en-ekran-8.png` ve `en/play-en-feature-1024x500.png`.
 Play Console › Mağaza girişi › Grafikler (İngilizce için önce “Çeviri ekle” › English).
 
 | # | Türkçe | English |
