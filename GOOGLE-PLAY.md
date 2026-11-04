@@ -2,8 +2,7 @@
 
 Paket adı: `com.lampofflighting.app` (bir kez yayınlanınca değişmez)
 Destek e-postası: lampoff.info@gmail.com
-Gizlilik politikası: Netlify sitenin adresi + `/gizlilik.html`
-(ör. https://SITE-ADIN.netlify.app/gizlilik.html)
+Gizlilik politikası: https://gokhan3167-netizen.github.io/isik-plani-android/gizlilik.html
 
 ## 0. Önemli kural: 12 test kullanıcısı, 14 gün
 
@@ -30,7 +29,7 @@ Uygulama, Ücretsiz → beyanları işaretle → Oluştur.
 
 | Form | Cevap |
 |---|---|
-| Gizlilik politikası | https://SITE-ADIN.netlify.app/gizlilik.html |
+| Gizlilik politikası | https://gokhan3167-netizen.github.io/isik-plani-android/gizlilik.html |
 | Uygulama erişimi | Tüm işlevler özel erişim gerektirmeden kullanılabilir |
 | Reklamlar | Hayır |
 | İçerik derecelendirmesi | Kategori "Tüm diğer uygulama türleri"; şiddet, cinsellik, kumar, uyuşturucu, kullanıcılar arası iletişim, konum paylaşımı, dijital satın alma: hepsi Hayır → "Herkes / 3+" |
@@ -63,7 +62,7 @@ Bu .txt dosyalarını asla depoya yükleme; yedeğini USB'de / şifre yöneticis
 ## 6. İlk derleme ve ilk yükleme (elle)
 
 1. GitHub → Actions → "Android APK derle" → Run workflow → kanal: alpha → Run.
-2. Bitince Artifacts'tan `lampoff-play-aab` indir, zipten `.aab` çıkar.
+2. Bitince Releases sayfasındaki son sürümden `lampoff-play.aab` dosyasını indir.
 3. Play Console → Test ve yayınla → Kapalı test → Alpha → Yönet:
    - Test kullanıcıları: e-posta listesi oluştur, 12+ Gmail adresi ekle.
    - Ülkeler: Türkiye (ve istediğin diğerleri).
