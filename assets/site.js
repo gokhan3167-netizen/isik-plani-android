@@ -53,7 +53,7 @@ document.addEventListener('click',e=>{
    const sel=k=>{ const b=bs.find(x=>x.dataset.k===k)||bs[0]; bs.forEach(x=>{ const on=x===b; x.setAttribute('aria-selected',on); x.tabIndex=on?0:-1; document.getElementById(x.getAttribute('aria-controls')).hidden=!on; }); };
    bs.forEach(b=>b.addEventListener('click',()=>{ sel(b.dataset.k); try{ history.replaceState(null,'','#'+b.dataset.k); }catch(_){} }));
    tl.addEventListener('keydown',e=>{ const i=bs.findIndex(x=>x.getAttribute('aria-selected')==='true'); if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ const n=bs[(i+(e.key==='ArrowRight'?1:-1)+bs.length)%bs.length]; n.click(); n.focus(); } });
-   const h=()=>{ const k=(location.hash||'').slice(1); if(k) sel(k); else { const ua=navigator.userAgent; sel(/android/i.test(ua)?'android':/iphone|ipad|macintosh.*mobile/i.test(ua)?'ios':/mac/i.test(ua)?'mac':/win/i.test(ua)?'windows':'web'); } };
+   const h=()=>{ const k=(location.hash||'').slice(1); if(k) sel(k); else { const ua=navigator.userAgent; sel(/iphone|ipad|macintosh.*mobile/i.test(ua)?'ios':'android'); } };
    h(); addEventListener('hashchange',h); }
 })();
 (()=>{const R=matchMedia('(prefers-reduced-motion: reduce)').matches, vis=(el,cb,th)=>new IntersectionObserver(e=>cb(e[0].isIntersecting),{threshold:th||.3}).observe(el);
