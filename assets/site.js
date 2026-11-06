@@ -114,3 +114,8 @@ document.querySelectorAll('.ppwall').forEach(w=>{vis(w,v=>{if(v)w.classList.add(
   w.querySelectorAll('.ppg').forEach(b=>b.addEventListener('click',()=>{im.src=b.dataset.src;im.alt=b.querySelector('img').alt;try{d.showModal()}catch(_){d.setAttribute('open','')}}));
   d.addEventListener('click',e=>{if(e.target===d||e.target.closest('.x'))d.close()})});
 })();
+/* 2D ↔ 3D kaydırıcı */
+document.querySelectorAll('.cmp2').forEach(c=>{const r=c.querySelector('input'),set=v=>c.style.setProperty('--p',v+'%');
+r.addEventListener('input',()=>set(r.value));set(r.value);
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;let touched=false;['pointerdown','keydown','touchstart'].forEach(e=>r.addEventListener(e,()=>touched=true,{passive:true}));
+const io=new IntersectionObserver(e=>{if(!e[0].isIntersecting)return;io.disconnect();let t0=null;const st=t=>{if(touched)return;t0=t0||t;const k=(t-t0)/2200;if(k>=1){set(50);r.value=50;return}const v=50+Math.sin(k*Math.PI*2)*28;set(v);r.value=v;requestAnimationFrame(st)};setTimeout(()=>requestAnimationFrame(st),500)},{threshold:.6});io.observe(c)});
