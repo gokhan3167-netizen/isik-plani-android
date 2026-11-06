@@ -1,0 +1,23 @@
+name: GDTF populer cihazlar (3D model kaynagi)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  indir:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: GDTF Share'den indir
+        env:
+          GDTF_USER: ${{ secrets.GDTF_USER }}
+          GDTF_PASS: ${{ secrets.GDTF_PASS }}
+        run: node scripts/gdtf-populer.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gdtf-populer
+          path: gdtf-populer
+          retention-days: 2
