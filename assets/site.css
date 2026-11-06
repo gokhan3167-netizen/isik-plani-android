@@ -411,3 +411,5 @@ body.navopen .top{backdrop-filter:none;-webkit-backdrop-filter:none;background:v
 .fcopy .ig{display:inline-flex;align-items:center;gap:7px;color:var(--soft);text-decoration:none}
 .fcopy .ig:hover{color:var(--ink)}
 .fcopy .ig svg{width:17px;height:17px}
+.shot.tall{max-width:300px;margin-inline:auto;border-radius:22px;overflow:hidden;border:5px solid #23272D;box-shadow:0 0 0 1px #3A4048}
+.shot.tall img{width:100%;height:auto}
