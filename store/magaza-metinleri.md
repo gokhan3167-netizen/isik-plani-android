@@ -94,7 +94,6 @@ COLOR, FOCUS & BEAMS
 • Drag the focus point to aim a fixture; aim a whole selection together.
 • Front and side sections, perspective and 3D views with realistic beams, color, gobos and haze; beams land on drapes and scenery, and the house goes fully dark.
 • Mini joystick for pan/tilt (540°/270°); gather a selection onto one point.
-• Sightlines in the side section flag pipes and units visible from the first and last rows.
 • Photometrics per unit: throw, beam diameter and approximate lux; pipe loads from fixture weights.
 
 RIDER & EXCHANGE
