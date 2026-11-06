@@ -23,6 +23,11 @@ const POP=[
  ['high ?end','solaframe 3000'],['high ?end','solaspot ?pro'],['vari-?lite','vl2600 profile'],['vari-?lite','vl3500'],
  ['sgm','p-?5'],['sgm','q-?7'],['sgm','g-?7'],['arri','skypanel s60'],['arri','l7'],['arri','orbiter'],['astera','ax1'],['astera','titan tube'],
  ['mdg','theone'],['look solutions','unique 2'],['antari','hz-?500'],['pro ?lights','eclipse'],['showtec','phantom'],
+ ['robe','robin 300x? ledwash'],['robe','robin 600x ledwash'],['robe','robin 800x ledwash'],['robe','ledbeam 100'],['robe','dl4s profile'],['robe','dl7s profile'],['robe','robin viva'],['robe','robin t1 fresnel|t1 pc'],
+ ['clay ?paky','^mythos$'],['clay ?paky','axcor profile 400'],['clay ?paky','axcor profile 600'],['clay ?paky','alpha spot hpe 300'],['clay ?paky','b-?eye k15'],['clay ?paky','sharpy wash 330'],['clay ?paky','stormy'],
+ ['martin','mac viper wash'],['martin','mac aura xip'],['martin','mac 700 profile'],['martin','mac 2000 wash'],['martin','rush mh ?3'],
+ ['chauvet','rogue r3 spot'],['chauvet','maverick mk2 wash'],['chauvet','rogue r2 beam'],
+ ['elation','platinum beam 5r'],['elation','rayzor 760'],['elation','fuze profile'],['glp','impression s350'],['high ?end','solaspot 2000'],['vari-?lite','vl2500 spot'],['ayrton','zonda'],['ayrton','bora'],
 ];
 const norm=s=>String(s||'').toLowerCase().replace(/[™®]/g,'').replace(/\s+/g,' ').trim();
 let cookie=''; async function api(p,o={}){ const h=Object.assign({},o.headers||{}); if(cookie) h.Cookie=cookie; const r=await fetch(API+p,Object.assign({signal:AbortSignal.timeout(90000)},o,{headers:h}));
