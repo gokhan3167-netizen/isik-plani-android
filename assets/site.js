@@ -119,3 +119,6 @@ document.querySelectorAll('.cmp2').forEach(c=>{const r=c.querySelector('input'),
 r.addEventListener('input',()=>set(r.value));set(r.value);
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;let touched=false;['pointerdown','keydown','touchstart'].forEach(e=>r.addEventListener(e,()=>touched=true,{passive:true}));
 const io=new IntersectionObserver(e=>{if(!e[0].isIntersecting)return;io.disconnect();let t0=null;const st=t=>{if(touched)return;t0=t0||t;const k=(t-t0)/2200;if(k>=1){set(50);r.value=50;return}const v=50+Math.sin(k*Math.PI*2)*28;set(v);r.value=v;requestAnimationFrame(st)};setTimeout(()=>requestAnimationFrame(st),500)},{threshold:.6});io.observe(c)});
+document.querySelectorAll('.cmpw').forEach(w=>{const f=w.querySelector('.cmp2'),P=JSON.parse(f.dataset.pairs||'[]'),a=f.querySelector('img.a'),b=f.querySelector('img.b'),bt=[...w.querySelectorAll('.cmpsw button')];
+P.flat().forEach(u=>{const i=new Image();i.src=u});
+bt.forEach(x=>x.addEventListener('click',()=>{const i=+x.dataset.i;a.src=P[i][0];b.src=P[i][1];bt.forEach(y=>y.setAttribute('aria-pressed',y===x?'true':'false'))}))});
