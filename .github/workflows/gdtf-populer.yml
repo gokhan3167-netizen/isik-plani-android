@@ -1,6 +1,13 @@
-name: GDTF populer cihazlar (3D model kaynagi)
+name: GDTF populer cihazlar (3D govde + plan sembolu)
+# GDTF Share'den en cok kullanilan cihazlari indirir, uygulamaya gomulen www/fx3d/lib.js'yi uretir ve main'e kaydeder.
+# Ham GDTF dosyalari hicbir yere yuklenmez (yalniz bu isin icinde kullanilir).
 on:
   workflow_dispatch:
+    inputs:
+      temizle:
+        description: 'Yalniz eski gecici taslak surumu (gdtf-ham-gecici) sil'
+        type: boolean
+        default: false
 permissions:
   contents: write
 jobs:
@@ -8,19 +15,26 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - name: Eski gecici taslak surumu sil
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release delete gdtf-ham-gecici -y --cleanup-tag 2>/dev/null || echo "taslak yok"
+      - if: ${{ !inputs.temizle }}
+        uses: actions/setup-node@v5
         with:
           node-version: 22
       - name: GDTF Share'den indir
+        if: ${{ !inputs.temizle }}
         env:
           GDTF_USER: ${{ secrets.GDTF_USER }}
           GDTF_PASS: ${{ secrets.GDTF_PASS }}
         run: node scripts/gdtf-populer.mjs
-      - name: Taslak (gizli) surume koy - yalniz depo yoneticileri gorur, is bitince silinir
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: 3D govde + plan sembolu paketi (www/fx3d/lib.js)
+        if: ${{ !inputs.temizle }}
+        run: node scripts/fx3d-build.mjs gdtf-populer
+      - name: main'e kaydet
+        if: ${{ !inputs.temizle }}
         run: |
-          cd gdtf-populer && zip -q -r ../gdtf-populer.zip . && cd ..
-          ls -la gdtf-populer.zip
-          gh release delete gdtf-ham-gecici -y --cleanup-tag 2>/dev/null || true
-          gh release create gdtf-ham-gecici gdtf-populer.zip --draft --title "GDTF ham (gecici, taslak)" --notes "Gecici. Donusturme bitince silinir."
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add www/fx3d/lib.js
+          git diff --cached --quiet && echo "degisiklik yok" || (git commit -m "fx3d: GDTF cihaz govdeleri ve plan sembolleri guncellendi" && git push)
