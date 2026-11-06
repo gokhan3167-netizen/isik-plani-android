@@ -245,12 +245,17 @@
       for (const t of p.P) rasterTri(grid, gw, gh, t.map(q => [(q[0] - x0) / px + 1.5, (-q[1] - y0) / px + 1.5]));
       const path = contours(grid, gw, gh).map(poly => simplify(poly, 0.9)).filter(poly => poly.length >= 3)
         .map(poly => 'M' + poly.map(q => ((q[0] - 1.5) * px + x0 - cx).toFixed(3) + ' ' + ((q[1] - 1.5) * px + y0 - cy).toFixed(3)).join('L') + 'Z').join('');
-      if (path) svg += `<path d="${path}" fill="${p.head && !mover ? '@T' : '#FFFFFF'}" fill-rule="evenodd" stroke="#16191D" stroke-width=".016" stroke-linejoin="round"/>`;
+      if (path) svg += `<path d="${path}" fill="${!mover ? '@T' : '#FFFFFF'}" fill-rule="evenodd" stroke="#16191D" stroke-width=".02" stroke-linejoin="round"/>`;
     }
     // lens(ler): hareketlide alttan görünen hüzme yüzeyleri
-    if (mover) { const seen = new Set();
+    // Planda okunurluk (6 Kas, Gökhan "sönük"): tek lens en az gövdenin %16'sı; çok pikselli cihazda pikseller tek renkli bir lens yüzeyinin üstünde.
+    if (mover) { const seen = new Set(), L = [];
       for (const bi of beams) { const m = mul(pre, W[bi]), o = ap(m, 0, 0, 0), d = ap(m, 0, 0, -1); if (d[2] - o[2] > -0.5) continue; const r = fx.g[bi][4] || 0.04, k = Math.round(o[0] * 200) + ',' + Math.round(o[1] * 200); if (seen.has(k)) continue; seen.add(k);
-        svg += `<circle cx="${(o[0] - cx).toFixed(3)}" cy="${(-o[1] - cy).toFixed(3)}" r="${Math.max(.012, r).toFixed(3)}" fill="@T" stroke="#16191D" stroke-width=".01"/>`; } }
+        L.push({ x: o[0] - cx, y: -o[1] - cy, r: Math.max(.012, r) }); }
+      if (L.length > 4) { let mx = 0, my = 0; L.forEach(q => { mx += q.x; my += q.y; }); mx /= L.length; my /= L.length; let rr = 0; L.forEach(q => { rr = Math.max(rr, Math.hypot(q.x - mx, q.y - my) + q.r); });
+        svg += `<circle cx="${mx.toFixed(3)}" cy="${my.toFixed(3)}" r="${(rr + .008).toFixed(3)}" fill="@T" stroke="#16191D" stroke-width=".018"/>`;
+        L.forEach(q => { svg += `<circle cx="${q.x.toFixed(3)}" cy="${q.y.toFixed(3)}" r="${q.r.toFixed(3)}" fill="@T" stroke="#16191D" stroke-width=".006"/>`; }); }
+      else { const rm = .16 * Math.min(w, l); L.forEach(q => { svg += `<circle cx="${q.x.toFixed(3)}" cy="${q.y.toFixed(3)}" r="${Math.max(q.r, L.length === 1 ? rm : 0).toFixed(3)}" fill="@T" stroke="#16191D" stroke-width=".016"/>`; }); } }
     return { svg, w: +w.toFixed(3), l: +l.toFixed(3) };
   }
   function isDesc(fx, i, anc) { let p = fx.g[i][0], d = 0; while (p >= 0 && d < 40) { if (p === anc) return true; p = fx.g[p][0]; d++; } return false; }
