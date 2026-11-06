@@ -435,3 +435,5 @@ body.navopen .top{backdrop-filter:none;-webkit-backdrop-filter:none;background:v
 .setupfig figcaption{margin-top:10px;color:var(--steel);font-size:14px}
 
 .tp.one{grid-template-columns:minmax(0,760px)}
+
+.shot.vid{margin:0}.shot.vid video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#000;border-radius:14px;border:1px solid var(--rule)}.shot.vid figcaption{margin-top:10px;font-size:13px;color:var(--steel);letter-spacing:.02em}
