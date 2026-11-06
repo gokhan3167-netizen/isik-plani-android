@@ -184,6 +184,12 @@
     }
     for (const t of geomsRoot.c) if (isGeom(t.tag) && !refd.has(t.a.Name)) build(t, -1, 0);
     if (!ms.length || !g.length || !fromFile) return null; // yalnız kutu/silindir: uygulamanın kendi simgesi daha iyi
+    // Aksesuar (kapak/barndoor, flag…) GDTF'te çoğu kez yanlış yerde durur (ör. ELP Manet: lensten 30 cm uzakta, havada) → çizme
+    { const W0 = []; g.forEach((x, i) => { W0[i] = x[0] >= 0 ? mul(W0[x[0]], x[2]) : x[2]; });
+      const bi = g.findIndex(x => x[1] === 'B'), bo = bi >= 0 ? ap(W0[bi], 0, 0, 0) : null;
+      g.forEach((x, i) => { if (x[3] < 0 || !/barn ?door|flag|visor|top ?hat|snoot|shutter ?door/i.test(x[5])) return;
+        if (!bo) { x[3] = -1; return; } const M = ms[x[3]]; let cx = 0, cy = 0, cz = 0; const n = M.V.length / 3; for (let k = 0; k < n; k++) { cx += M.V[k * 3]; cy += M.V[k * 3 + 1]; cz += M.V[k * 3 + 2]; }
+        const c = ap(W0[i], cx / n, cy / n, cz / n); if (Math.hypot(c[0] - bo[0], c[1] - bo[1], c[2] - bo[2]) > 0.22) x[3] = -1; }); }
     let pan = g.findIndex(x => panName && x[5] === panName), tilt = g.findIndex(x => tiltName && x[5] === tiltName);
     const axes = g.map((x, i) => x[1] === 'A' ? i : -1).filter(i => i >= 0);
     if (pan < 0 && tilt < 0 && axes.length >= 2 && !panName) { pan = axes[0]; tilt = axes[1]; }
