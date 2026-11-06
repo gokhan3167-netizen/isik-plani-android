@@ -253,7 +253,11 @@
       for (const bi of beams) { const m = mul(pre, W[bi]), o = ap(m, 0, 0, 0), d = ap(m, 0, 0, -1); if (d[2] - o[2] > -0.5) continue; const r = fx.g[bi][4] || 0.04, k = Math.round(o[0] * 200) + ',' + Math.round(o[1] * 200); if (seen.has(k)) continue; seen.add(k);
         L.push({ x: o[0] - cx, y: -o[1] - cy, r: Math.max(.012, r) }); }
       if (L.length > 4) { let mx = 0, my = 0; L.forEach(q => { mx += q.x; my += q.y; }); mx /= L.length; my /= L.length; let rr = 0; L.forEach(q => { rr = Math.max(rr, Math.hypot(q.x - mx, q.y - my) + q.r); });
-        svg += `<circle cx="${mx.toFixed(3)}" cy="${my.toFixed(3)}" r="${(rr + .008).toFixed(3)}" fill="@T" stroke="#16191D" stroke-width=".018"/>`;
+        // Pikseller sıra hâlindeyse (bar/tüp) daire değil, onları saran yuvarlak köşeli şerit
+        let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9, pr = 0; L.forEach(q => { x0 = Math.min(x0, q.x); x1 = Math.max(x1, q.x); y0 = Math.min(y0, q.y); y1 = Math.max(y1, q.y); pr = Math.max(pr, q.r); });
+        const ew = x1 - x0, eh = y1 - y0, pad = pr + .008;
+        if (Math.max(ew, eh) > 1.6 * Math.max(Math.min(ew, eh), pr * 2)) svg += `<rect x="${(x0 - pad).toFixed(3)}" y="${(y0 - pad).toFixed(3)}" width="${(ew + 2 * pad).toFixed(3)}" height="${(eh + 2 * pad).toFixed(3)}" rx="${pad.toFixed(3)}" fill="@T" stroke="#16191D" stroke-width=".018"/>`;
+        else svg += `<circle cx="${mx.toFixed(3)}" cy="${my.toFixed(3)}" r="${(rr + .008).toFixed(3)}" fill="@T" stroke="#16191D" stroke-width=".018"/>`;
         L.forEach(q => { svg += `<circle cx="${q.x.toFixed(3)}" cy="${q.y.toFixed(3)}" r="${q.r.toFixed(3)}" fill="@T" stroke="#16191D" stroke-width=".006"/>`; }); }
       else { const rm = .16 * Math.min(w, l); L.forEach(q => { svg += `<circle cx="${q.x.toFixed(3)}" cy="${q.y.toFixed(3)}" r="${Math.max(q.r, L.length === 1 ? rm : 0).toFixed(3)}" fill="@T" stroke="#16191D" stroke-width=".016"/>`; }); } }
     return { svg, w: +w.toFixed(3), l: +l.toFixed(3) };
