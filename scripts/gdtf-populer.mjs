@@ -8,21 +8,21 @@ const API='https://gdtf-share.com/apis/public/', USER=process.env.GDTF_USER, PAS
 const POP=[
  ['robe','robin t1 profile'],['robe','robin t2 profile'],['robe','megapointe'],['robe','^(robin )?pointe$'],['robe','bmfl spot'],['robe','bmfl blade'],['robe','bmfl wash ?beam'],
  ['robe','robin 600 ledwash'],['robe','robin 800 ledwash'],['robe','robin 1200 ledwash'],['robe','ledbeam 150'],['robe','ledbeam 350'],['robe','spiider'],['robe','esprite'],['robe','forte'],
- ['robe','painte'],['robe','tetra ?2'],['robe','t11 profile'],['robe','t11 fresnel'],['robe','parfect 150'],['robe','ledwash 300'],['robe','ledwash 600'],
+ ['robe','painte'],['robe','tetra ?2'],['robe','t11 profile'],['robe','t11 ?f'],['robe','parfect 150'],['robe','ledwash ?300'],['robe','ledwash ?600|led ?wash ?600'],
  ['martin','mac aura$'],['martin','mac aura xb'],['martin','mac aura pxl'],['martin','mac viper profile'],['martin','mac viper performance'],['martin','mac encore performance'],
  ['martin','mac quantum wash'],['martin','mac ultra performance'],['martin','mac ultra wash'],['martin','mac axiom hybrid'],['martin','mac allure profile'],['martin','era 400 performance'],
  ['martin','era 600 performance'],['martin','atomic 3000 led'],['martin','elp'],
- ['clay ?paky','^sharpy$'],['clay ?paky','sharpy plus'],['clay ?paky','mythos 2'],['clay ?paky','scenius unico'],['clay ?paky','axcor profile 900'],['clay ?paky','k10 b-?eye'],
- ['clay ?paky','k20 b-?eye'],['clay ?paky','alpha spot hpe 1500'],['clay ?paky','sharpy x frame'],['clay ?paky','xtylos'],['clay ?paky','arolla profile mp'],['clay ?paky','volero wave'],
+ ['clay ?paky','^sharpy$'],['clay ?paky','sharpy plus'],['clay ?paky','mythos ?2'],['clay ?paky','scenius unico'],['clay ?paky','axcor ?profile ?900'],['clay ?paky','b-?eye ?k10|k10'],
+ ['clay ?paky','b-?eye ?k20|k20'],['clay ?paky','alpha ?spot ?hpe ?1500'],['clay ?paky','sharpy x frame'],['clay ?paky','xtylos'],['clay ?paky','arolla profile mp'],['clay ?paky','volero wave'],
  ['ayrton','diablo'],['ayrton','perseo'],['ayrton','khamsin'],['ayrton','domino'],['ayrton','magicpanel'],['ayrton','ghibli'],['ayrton','mistral'],['ayrton','cobra'],
- ['etc','source four led series 2'],['etc','source four led series 3'],['etc','colorsource par'],['etc','colorsource spot'],['etc','lustr'],['etc','desire d40'],['etc','fos/4'],['etc','source four'],
+ ['etc|electronic theatre','source ?four led series ?2|s4 led series ?2'],['etc|electronic theatre','source ?four led series ?3|s4 led series ?3'],['etc|electronic theatre','colorsource par'],['etc|electronic theatre','colorsource spot'],['etc|electronic theatre','lustr'],['etc|electronic theatre','desire d40'],['etc|electronic theatre','fos/?4'],['etc|electronic theatre','source ?four(?! led)'],
  ['chauvet','maverick mk3 profile'],['chauvet','maverick force'],['chauvet','rogue r2 wash'],['chauvet','rogue r2x spot'],['chauvet','rogue r1 beam'],['chauvet','colorado 1 quad zoom'],
  ['chauvet','ovation e-910fc'],['chauvet','ovation f-915fc'],['chauvet','strike 1'],
  ['glp','impression x4$'],['glp','impression x4 bar 20'],['glp','jdc1'],['glp','impression x5'],['glp','knv'],
  ['elation','proteus maximus'],['elation','proteus hybrid'],['elation','artiste picasso'],['elation','artiste monet'],['elation','fuze wash'],['elation','smarty hybrid'],['elation','chorus line 16'],
- ['high ?end','solaframe 3000'],['high ?end','solaspot pro'],['vari-?lite','vl2600 profile'],['vari-?lite','vl3500'],
- ['sgm','p-?5'],['sgm','q-?7'],['sgm','g-?7'],['arri','skypanel s60'],['arri','l7-c'],['arri','orbiter'],['astera','ax1'],['astera','titan tube'],
- ['mdg','theone'],['look solutions','unique 2'],['antari','hz-?500'],['prolights','eclipse'],['showtec','phantom'],
+ ['high ?end','solaframe 3000'],['high ?end','solaspot ?pro'],['vari-?lite','vl2600 profile'],['vari-?lite','vl3500'],
+ ['sgm','p-?5'],['sgm','q-?7'],['sgm','g-?7'],['arri','skypanel s60'],['arri','l7'],['arri','orbiter'],['astera','ax1'],['astera','titan tube'],
+ ['mdg','theone'],['look solutions','unique 2'],['antari','hz-?500'],['pro ?lights','eclipse'],['showtec','phantom'],
 ];
 const norm=s=>String(s||'').toLowerCase().replace(/[™®]/g,'').replace(/\s+/g,' ').trim();
 let cookie=''; async function api(p,o={}){ const h=Object.assign({},o.headers||{}); if(cookie) h.Cookie=cookie; const r=await fetch(API+p,Object.assign({signal:AbortSignal.timeout(90000)},o,{headers:h}));
@@ -35,7 +35,7 @@ const lst=await (await api('getList.php')).json(); const L=lst.list||[]; console
 mkdirSync(OUT,{recursive:true}); const picked=[], seen=new Set();
 for(const [mf,fx] of POP){ const rm=new RegExp(mf,'i'), rf=new RegExp(fx,'i');
   const c=L.filter(it=>rm.test(norm(it.manufacturer))&&rf.test(norm(it.fixture)));
-  if(!c.length){ console.log('YOK:',mf,fx); continue; }
+  if(!c.length){ const w=fx.split(/[^a-z0-9]+/i).filter(x=>x.length>1)[0]||fx; console.log('YOK:',mf,fx,'· benzerler:',L.filter(it=>rm.test(norm(it.manufacturer))&&norm(it.fixture).includes(w.toLowerCase())).slice(0,6).map(it=>it.manufacturer+' / '+it.fixture).join(' | ')||'—'); continue; }
   // Üretici yüklemesi önce, sonra en yüksek puan/en yeni
   c.sort((a,b)=>((b.uploader==='Manuf.')-(a.uploader==='Manuf.'))||((+b.rating||0)-(+a.rating||0))||((+b.lastModified||0)-(+a.lastModified||0)));
   const it=c[0], k=it.uuid||(it.manufacturer+'|'+it.fixture); if(seen.has(k)) continue; seen.add(k); picked.push(it); }

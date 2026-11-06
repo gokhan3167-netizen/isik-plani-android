@@ -2,7 +2,7 @@ name: GDTF populer cihazlar (3D model kaynagi)
 on:
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   indir:
     runs-on: ubuntu-24.04
@@ -16,8 +16,11 @@ jobs:
           GDTF_USER: ${{ secrets.GDTF_USER }}
           GDTF_PASS: ${{ secrets.GDTF_PASS }}
         run: node scripts/gdtf-populer.mjs
-      - uses: actions/upload-artifact@v4
-        with:
-          name: gdtf-populer
-          path: gdtf-populer
-          retention-days: 2
+      - name: Taslak (gizli) surume koy - yalniz depo yoneticileri gorur, is bitince silinir
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd gdtf-populer && zip -q -r ../gdtf-populer.zip . && cd ..
+          ls -la gdtf-populer.zip
+          gh release delete gdtf-ham-gecici -y --cleanup-tag 2>/dev/null || true
+          gh release create gdtf-ham-gecici gdtf-populer.zip --draft --title "GDTF ham (gecici, taslak)" --notes "Gecici. Donusturme bitince silinir."
