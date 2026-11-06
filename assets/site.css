@@ -372,3 +372,22 @@ body.navopen .top{backdrop-filter:none;-webkit-backdrop-filter:none;background:v
 @media (max-width:860px){.plats.two{grid-template-columns:1fr}}
 
 .sthero{padding:72px 0 24px;background:radial-gradient(60% 120% at 80% 0%,rgba(242,154,31,.12),transparent 60%)}.sthero .kicker{color:var(--amber-2);font:600 13px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px}.sthero h1{font:700 clamp(40px,5.4vw,72px)/1 var(--cond);margin:0 0 16px;max-width:14em;text-wrap:balance}.sthero .lead{color:var(--soft);max-width:40em;margin:0 0 22px;font-size:18px}.sthero .note{color:var(--steel);font-size:14.5px;margin:14px 0 0}.sthimg{margin:40px 0 0}.sthimg img{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--rule)}.sgal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}.sgal img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--rule);transition:transform .25s}.sgal a:hover img{transform:scale(1.015)}.cards.three{grid-template-columns:repeat(3,minmax(0,1fr))}@media (max-width:860px){.sgal,.cards.three{grid-template-columns:1fr}}
+/* Android beta odağı (6 Kas 2026) */
+.betapill{display:inline-flex;align-items:center;gap:9px;margin:0 0 18px;padding:7px 14px 7px 11px;border:1px solid rgba(87,201,138,.45);border-radius:999px;background:rgba(87,201,138,.1);color:#9BE3B9;font:600 13.5px/1 var(--body);letter-spacing:.04em;text-decoration:none}
+.betapill:hover{border-color:#57C98A;color:#C6F1D7}
+.betapill i{width:8px;height:8px;border-radius:50%;background:#57C98A;box-shadow:0 0 0 0 rgba(87,201,138,.6);animation:bp 2.4s ease-out infinite}
+@keyframes bp{70%{box-shadow:0 0 0 8px rgba(87,201,138,0)}100%{box-shadow:0 0 0 0 rgba(87,201,138,0)}}
+@media (prefers-reduced-motion:reduce){.betapill i{animation:none}}
+.ptag{display:inline-block;vertical-align:middle;margin-left:6px;padding:3px 8px;border-radius:999px;background:rgba(87,201,138,.14);color:#9BE3B9;font:600 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase}
+.beta{margin:24px 0 0;padding:22px 22px 20px;border:1px solid rgba(87,201,138,.35);border-radius:14px;background:linear-gradient(180deg,rgba(87,201,138,.07),transparent 70%);scroll-margin-top:90px}
+.beta .btag{margin:0 0 8px;color:#9BE3B9;font:600 12.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.beta h3{font:700 26px/1.1 var(--cond);margin:0 0 12px}
+.beta ol{margin:0 0 18px;padding:0;list-style:none;counter-reset:b}
+.beta li{counter-increment:b;position:relative;padding:10px 0 10px 40px;border-top:1px solid var(--rule);color:var(--soft);font-size:15.5px}
+.beta li::before{content:counter(b);position:absolute;left:0;top:10px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--deck);border:1px solid var(--rule);color:var(--ink);font:700 14px/1 var(--cond)}
+.beta li b{color:var(--ink);font-weight:600;display:block}
+.beta .ctas{display:flex;flex-wrap:wrap;gap:10px}
+.beta .tnote{margin-top:12px}
+.soonpg .dlhero{padding-bottom:48px}
+.soonpg .soonbody{padding:40px 24px 96px}
+.soonpg .soonbody .req{max-width:640px}
